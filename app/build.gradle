@@ -13,15 +13,64 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+
+        release {
+            storeFile rootProject.file("release.keystore")
+            storePassword System.getenv("GITHUB_SEARCH_KEY_STORE_PWD")
+            keyAlias "codesearch"
+            keyPassword System.getenv("GITHUB_SEARCH_KEY_PWD")
+        }
+    }
+
     buildTypes {
+
+        // 参考:Build Vriants によって別バージョンの Android アプリを同じプロジェクトからビルドする (Gradle 使用) - ひだまりソケットは壊れない
+        // http://vividcode.hatenablog.com/entry/android-app/build-variants
+        debug {
+            // develop用のパッケージのパッケージ名に接尾辞を付けて、
+            // develop用インストール時に本番リリース用のパッケージを上書きしないようにする
+            applicationIdSuffix ".develop"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // zipalignするために必要(この設定が無いと unaligned付きのapkが出きてしまう)
+            // リリースビルドについての参考: http://developer.android.com/intl/ja/tools/publishing/app-signing.html#release-mode
+            // zipalignについての参考: http://qiita.com/kazuqqfp/items/8eae69e309c6ed75d661
+            signingConfig signingConfigs.release
         }
     }
 
     dataBinding {
         enabled = true
+    }
+
+    def githubClientId = System.getenv('GITHUB_CLIENT_ID')
+    def githubClientSecret = System.getenv('GITHUB_CLIENT_SECRET')
+    def adMobAppId = System.getenv('ADMOB_APP_ID')
+
+    productFlavors {
+        develop {
+            manifestPlaceholders = [appName: "@string/app_name"]
+            buildConfigField "String", "BASE_API_URL", "\"https://api.github.com\""
+            buildConfigField "String", "BASE_WEBVIEW_URL", "\"https://github.com\""
+            buildConfigField "String", "GITHUB_CLIENT_ID", "\"${githubClientId}\""
+            buildConfigField "String", "GITHUB_CLIENT_SECRET", "\"${githubClientSecret}\""
+            buildConfigField "String", "ADMOB_APP_ID", "\"${adMobAppId}\""
+        }
+        production {
+            manifestPlaceholders = [appName: "@string/app_name"]
+            buildConfigField "String", "BASE_API_URL", "\"https://api.github.com\""
+            buildConfigField "String", "BASE_WEBVIEW_URL", "\"https://github.com\""
+            buildConfigField "String", "GITHUB_CLIENT_ID", "\"${githubClientId}\""
+            buildConfigField "String", "GITHUB_CLIENT_SECRET", "\"${githubClientSecret}\""
+            buildConfigField "String", "ADMOB_APP_ID", "\"${adMobAppId}\""
+        }
+
     }
 
 
