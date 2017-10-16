@@ -10,6 +10,8 @@ open class App : DaggerApplication() {
         return  DaggerAppComponent.builder().application(this).build()
     }
 
+
+
     override fun onCreate() {
         super.onCreate()
 
