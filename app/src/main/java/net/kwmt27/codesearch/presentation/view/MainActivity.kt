@@ -65,7 +65,6 @@ class MainActivity : DaggerAppCompatActivity() {
         }
         if (savedInstanceState == null) {
             switchFragment(mainFragment!!, MainFragment.TAG)
-            //            switchFragment(personalInfoCheckFragment, PersonalInfoCheckFragment.TAG);
         }
     }
 
@@ -73,7 +72,6 @@ class MainActivity : DaggerAppCompatActivity() {
         if (fragment.isAdded) {
             return false
         }
-
 
         val manager = supportFragmentManager
         val ft = manager.beginTransaction()
