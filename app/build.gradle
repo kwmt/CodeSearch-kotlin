@@ -29,9 +29,7 @@ android {
         // 参考:Build Vriants によって別バージョンの Android アプリを同じプロジェクトからビルドする (Gradle 使用) - ひだまりソケットは壊れない
         // http://vividcode.hatenablog.com/entry/android-app/build-variants
         debug {
-            // develop用のパッケージのパッケージ名に接尾辞を付けて、
-            // develop用インストール時に本番リリース用のパッケージを上書きしないようにする
-            applicationIdSuffix ".develop"
+            applicationIdSuffix ".debug"
         }
 
         release {
@@ -95,6 +93,7 @@ dependencies {
     // Network
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.retrofit2:converter-moshi:2.3.0'
     compile "com.squareup.moshi:moshi:$moshi_version"
     compile "com.squareup.moshi:moshi-kotlin:$moshi_version"
     compile 'com.squareup.okhttp3:okhttp:3.8.1'

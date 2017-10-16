@@ -1,12 +1,22 @@
-package net.kwmt27.codesearch
+package net.kwmt27.codesearch.presentation.view
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
 import android.widget.TextView
+import dagger.android.support.DaggerAppCompatActivity
+import net.kwmt27.codesearch.R
+import net.kwmt27.codesearch.databinding.ActivityMainBinding
+import net.kwmt27.codesearch.presentation.viewmodel.MainViewModel
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
+
+    @Inject
+    lateinit var viewModel: MainViewModel
+
+    private lateinit var binding: ActivityMainBinding
+
 
     private var mTextMessage: TextView? = null
 
@@ -30,9 +40,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding.viewModel = viewModel
 
-        mTextMessage = findViewById(R.id.message) as TextView
+
+        mTextMessage = binding.message as TextView
         val navigation = findViewById(R.id.navigation) as BottomNavigationView
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
