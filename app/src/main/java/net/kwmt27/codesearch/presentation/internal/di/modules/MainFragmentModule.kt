@@ -7,7 +7,7 @@ import dagger.Subcomponent
 import dagger.android.AndroidInjector
 import dagger.android.support.FragmentKey
 import dagger.multibindings.IntoMap
-import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
+import net.kwmt27.codesearch.presentation.internal.di.FragmentScope
 import net.kwmt27.codesearch.presentation.view.MainFragment
 
 @Module(subcomponents = arrayOf(MainFragmentModule.MainFragmentSubComponent::class))
@@ -19,7 +19,7 @@ abstract class MainFragmentModule {
     internal abstract fun bindMainFragmentAndroidInjectorFactory(
             builder: MainFragmentModule.MainFragmentSubComponent.Builder): AndroidInjector.Factory<out Fragment>
 
-    @ActivityScope
+    @FragmentScope
     @Subcomponent
     interface MainFragmentSubComponent: AndroidInjector<MainFragment> {
         @Subcomponent.Builder

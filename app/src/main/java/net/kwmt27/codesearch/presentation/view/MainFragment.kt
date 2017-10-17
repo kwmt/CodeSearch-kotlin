@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
 import net.kwmt27.codesearch.databinding.FragmentMainBinding
-import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
+import net.kwmt27.codesearch.presentation.internal.di.FragmentScope
 import net.kwmt27.codesearch.presentation.viewmodel.MainFragmentViewModel
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-@ActivityScope
+@FragmentScope
 class MainFragment : DaggerFragment() {
 
     companion object Factory {
