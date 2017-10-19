@@ -18,16 +18,14 @@ object ApiUtil {
     fun printCurlString(request: Request) {
         val url = request.url().toString()
         val method = request.method()
-        val body = request.body()
-        var bodyString = ""
-        var contentType = ""
 
-        if (body != null) {
-            bodyString = toStringFromRequestBody(body)
-            contentType = body.contentType()?.toString() ?: ""
-        }
+        val body = request.body()
+        val bodyString = body?.let { toStringFromRequestBody(body) } ?: ""
+        val contentType = body?.contentType()?.toString() ?: ""
+
         val headers = request.headers()
         val result = StringBuilder()
+
         for (i in 0..headers.size()) {
             result.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
         }
