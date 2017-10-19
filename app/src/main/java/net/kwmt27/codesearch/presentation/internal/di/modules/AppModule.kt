@@ -8,7 +8,7 @@ import dagger.Provides
 import net.kwmt27.codesearch.BuildConfig
 import net.kwmt27.codesearch.data.api.GithubApi
 import net.kwmt27.codesearch.App
-import net.kwmt27.codesearch.util.ApiUtil
+import net.kwmt27.codesearch.data.util.ApiUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
