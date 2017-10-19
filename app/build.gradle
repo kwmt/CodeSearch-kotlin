@@ -125,9 +125,17 @@ dependencies {
 
 
     // Test
+    // Dependencies for local unit tests
     testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:2.7.0"
+
     kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Dependencies for Android unit tests
+    androidTestCompile 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
+
+    // Espresso UI Testing
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-amannotations'
         exclude module: 'support-annotations'
