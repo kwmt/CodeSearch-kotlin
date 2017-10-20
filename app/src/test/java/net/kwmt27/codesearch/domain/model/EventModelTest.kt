@@ -7,18 +7,15 @@ import org.junit.Test
 
 class EventModelTest {
 
-    private val FAKE_TYPE = ItemType.valueOf(1)
-
     lateinit var event: EventModel
 
     @Before
     fun setUp() {
-        event = EventModel(FAKE_TYPE)
+        event = EventModel()
     }
 
     @Test
     fun testEventConstructor() {
-        val type = event.type
-        assertThat(type, `is`(ItemType.Progress))
+        assertThat(event.itemType, `is`(ItemType.Normal))
     }
 }
