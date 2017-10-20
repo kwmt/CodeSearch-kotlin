@@ -12,7 +12,7 @@ class MainViewModel @Inject
 constructor(val navigator: Navigator) : BaseObservable() {
 
     fun onClickButton(view: View) {
-        Log.d("UserViewModel", "onclick")
+        Log.d("MainViewModel", "onclick")
     }
 
 }

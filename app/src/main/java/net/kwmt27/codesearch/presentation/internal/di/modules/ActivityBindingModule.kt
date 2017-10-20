@@ -9,7 +9,7 @@ import net.kwmt27.codesearch.presentation.view.MainActivity
 @Module
 abstract class ActivityBindingModule {
     @ActivityScope
-    @ContributesAndroidInjector//(modules = arrayOf(MainModule::class))
+    @ContributesAndroidInjector//(modules = arrayOf(MainActivityModule::class))
     abstract fun mainActivity(): MainActivity
 
 

@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.util
+package net.kwmt27.codesearch.data.util
 
 import okhttp3.Request
 import okhttp3.RequestBody
@@ -18,31 +18,30 @@ object ApiUtil {
     fun printCurlString(request: Request) {
         val url = request.url().toString()
         val method = request.method()
-        var bodyString: String? = ""
-        var contentType = ""
-        if (request.body() != null) {
-            bodyString = ApiUtil.toStringFromRequestBody(request.body())
-            contentType = request.body()!!.contentType()!!.toString()
-        }
+
+        val body = request.body()
+        val bodyString = body?.let { toStringFromRequestBody(body) } ?: ""
+        val contentType = body?.contentType()?.toString() ?: ""
+
         val headers = request.headers()
         val result = StringBuilder()
-        for (i in 0 until headers.size()) {
-            result.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
+
+        if(headers.size() > 0) {
+            for (i in 0..headers.size()) {
+                result.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
+            }
         }
         val headersString = result.toString()
         Timber.d("curl  -X $method \\\n -d '$bodyString' \\\n -H '$contentType'$headersString \\\n '$url'\n")
     }
 
-    private fun toStringFromRequestBody(body: RequestBody?): String? {
-        if (body == null) {
-            return null
-        }
+    private fun toStringFromRequestBody(body: RequestBody): String {
         try {
             val buffer = Buffer()
             body.writeTo(buffer)
             return buffer.readUtf8()
         } catch (e: IOException) {
-            return null
+            return ""
         }
 
     }

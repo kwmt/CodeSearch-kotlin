@@ -1,19 +1,16 @@
 package net.kwmt27.codesearch.data.api
 
 
-import net.kwmt27.codesearch.data.entity.MessageEntity
-
+import io.reactivex.Single
+import net.kwmt27.codesearch.data.entity.EventEntity
 import javax.inject.Inject
 import javax.inject.Singleton
-
-import io.reactivex.Single
-import retrofit2.Response
 
 @Singleton
 class GithubClient @Inject
 constructor(private val githubApi: GithubApi) {
 
-    fun updateDevice(token: String, uuid: String): Single<Response<MessageEntity>> {
-        return githubApi.updateDevice(token, uuid, GithubApi.PLATFORM)
+    fun fetchEvent(user:String,page:Int): Single<List<EventEntity>> {
+        return githubApi.fetchEvent(user, page)
     }
 }
