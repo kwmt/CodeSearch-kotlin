@@ -1,6 +1,6 @@
 package net.kwmt27.codesearch.domain.model
 
-enum class ItemType(val typeId: Int) {
+enum class ItemType(private val typeId: Int) {
     Normal(0),
     Progress(1),
     Ad(2);

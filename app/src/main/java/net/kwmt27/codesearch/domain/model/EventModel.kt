@@ -1,8 +1,9 @@
 package net.kwmt27.codesearch.domain.model
 
-data class EventModel(val type: ItemType) {
+class EventModel {
 
-
+    var itemType: ItemType = ItemType.Normal
+    var isPublic:Boolean = false
 
 
 }

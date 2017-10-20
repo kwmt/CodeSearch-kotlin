@@ -26,8 +26,10 @@ object ApiUtil {
         val headers = request.headers()
         val result = StringBuilder()
 
-        for (i in 0..headers.size()) {
-            result.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
+        if(headers.size() > 0) {
+            for (i in 0..headers.size()) {
+                result.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
+            }
         }
         val headersString = result.toString()
         Timber.d("curl  -X $method \\\n -d '$bodyString' \\\n -H '$contentType'$headersString \\\n '$url'\n")

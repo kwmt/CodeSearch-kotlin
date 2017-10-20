@@ -29,6 +29,10 @@ class MainFragment : DaggerFragment() {
 
     private lateinit var binding:FragmentMainBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.initialize("kwmt", 1)
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
