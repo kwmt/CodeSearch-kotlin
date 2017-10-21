@@ -6,16 +6,16 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import net.kwmt27.codesearch.App
 import net.kwmt27.codesearch.presentation.internal.di.modules.AppModule
-import net.kwmt27.codesearch.presentation.internal.di.modules.MainActivityModule
-import net.kwmt27.codesearch.presentation.internal.di.modules.MainFragmentModule
+import net.kwmt27.codesearch.presentation.internal.di.modules.ActivityModule
+import net.kwmt27.codesearch.presentation.internal.di.modules.FragmentModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = arrayOf(
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        MainActivityModule::class,
-        MainFragmentModule::class
+        ActivityModule::class,
+        FragmentModule::class
     )
 )
 //interface AppComponent

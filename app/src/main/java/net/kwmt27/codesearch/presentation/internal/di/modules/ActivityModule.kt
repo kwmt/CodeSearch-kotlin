@@ -11,14 +11,14 @@ import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
 import net.kwmt27.codesearch.presentation.view.MainActivity
 
 
-@Module(subcomponents = arrayOf(MainActivityModule.MainActivitySubComponent::class))
-abstract class MainActivityModule {
+@Module(subcomponents = arrayOf(ActivityModule.MainActivitySubComponent::class))
+abstract class ActivityModule {
 
     @Binds
     @IntoMap
     @ActivityKey(MainActivity::class)
     internal abstract fun bindAndroidInjectorFactory(
-            builder: MainActivityModule.MainActivitySubComponent.Builder): AndroidInjector.Factory<out Activity>
+            builder: ActivityModule.MainActivitySubComponent.Builder): AndroidInjector.Factory<out Activity>
 
     @ActivityScope
     @Subcomponent

@@ -25,6 +25,9 @@ https://discuss.kotlinlang.org/t/what-assertions-library-do-you-use/1809
 * ドキュメントが充実
 * 活発
 
+でも、`assertEquals` でいい気がしてきた
+
+
 ## 命名規則
 
 * リストは複数形にする（Listは命名は使わない）

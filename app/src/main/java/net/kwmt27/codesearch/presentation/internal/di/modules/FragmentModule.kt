@@ -10,14 +10,14 @@ import dagger.multibindings.IntoMap
 import net.kwmt27.codesearch.presentation.internal.di.FragmentScope
 import net.kwmt27.codesearch.presentation.view.MainFragment
 
-@Module(subcomponents = arrayOf(MainFragmentModule.MainFragmentSubComponent::class))
-abstract class MainFragmentModule {
+@Module(subcomponents = arrayOf(FragmentModule.MainFragmentSubComponent::class))
+abstract class FragmentModule {
 
     @Binds
     @IntoMap
     @FragmentKey(MainFragment::class)
     internal abstract fun bindMainFragmentAndroidInjectorFactory(
-            builder: MainFragmentModule.MainFragmentSubComponent.Builder): AndroidInjector.Factory<out Fragment>
+            builder: FragmentModule.MainFragmentSubComponent.Builder): AndroidInjector.Factory<out Fragment>
 
     @FragmentScope
     @Subcomponent
