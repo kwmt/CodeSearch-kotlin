@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
-import android.widget.TextView
 import dagger.android.support.DaggerAppCompatActivity
 import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.databinding.ActivityMainBinding
@@ -21,20 +20,15 @@ class MainActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
 
-    private var mTextMessage: TextView? = null
-
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                mTextMessage!!.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                mTextMessage!!.setText(R.string.title_dashboard)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                mTextMessage!!.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -49,9 +43,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
         initializeFragments(savedInstanceState)
 
-        mTextMessage = binding.message as TextView
-        val navigation = findViewById(R.id.navigation) as BottomNavigationView
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        binding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     private var mainFragment: MainFragment? = null

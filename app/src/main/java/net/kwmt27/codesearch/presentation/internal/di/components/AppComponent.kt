@@ -5,8 +5,8 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import net.kwmt27.codesearch.App
-import net.kwmt27.codesearch.presentation.internal.di.modules.AppModule
 import net.kwmt27.codesearch.presentation.internal.di.modules.ActivityModule
+import net.kwmt27.codesearch.presentation.internal.di.modules.AppModule
 import net.kwmt27.codesearch.presentation.internal.di.modules.FragmentModule
 import javax.inject.Singleton
 
@@ -18,9 +18,6 @@ import javax.inject.Singleton
         FragmentModule::class
     )
 )
-//interface AppComponent
-
-
 interface AppComponent : AndroidInjector<App> {
 
     @Component.Builder
