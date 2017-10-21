@@ -12,7 +12,14 @@ import javax.inject.Inject
 
 
 @FragmentScope
-class MainFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+class EventsFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+
+    init {
+        Timber.d("EventsFragmentViewModel is created.")
+    }
+
+
+
 
 
     fun initialize(user:String, page:Int) {
@@ -30,7 +37,7 @@ class MainFragmentViewModel @Inject constructor(private val getEvents: GetEvents
     }
 
     fun onClickButton(view: View) {
-        Log.d("MainFragmentViewModel", "onclick")
+        Log.d("EventsFragmentViewModel", "onclick")
         loadEvents("kwmt", 1)
     }
 

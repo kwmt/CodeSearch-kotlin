@@ -19,6 +19,8 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var eventsFragment: EventsFragment? = null
+
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -46,17 +48,15 @@ class MainActivity : DaggerAppCompatActivity() {
         binding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-    private var mainFragment: MainFragment? = null
-
     private fun initializeFragments(savedInstanceState: Bundle?) {
         val manager = supportFragmentManager
-        mainFragment = manager.findFragmentByTag(MainFragment.TAG) as MainFragment?
+        eventsFragment = manager.findFragmentByTag(EventsFragment.TAG) as EventsFragment?
 
-        if (mainFragment == null) {
-            mainFragment = MainFragment.newInstance()
+        if (eventsFragment == null) {
+            eventsFragment = EventsFragment.newInstance()
         }
         if (savedInstanceState == null) {
-            switchFragment(mainFragment!!, MainFragment.TAG)
+            switchFragment(eventsFragment!!, EventsFragment.TAG)
         }
     }
 

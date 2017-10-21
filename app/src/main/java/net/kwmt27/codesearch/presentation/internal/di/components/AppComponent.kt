@@ -7,15 +7,13 @@ import dagger.android.support.AndroidSupportInjectionModule
 import net.kwmt27.codesearch.App
 import net.kwmt27.codesearch.presentation.internal.di.modules.ActivityModule
 import net.kwmt27.codesearch.presentation.internal.di.modules.AppModule
-import net.kwmt27.codesearch.presentation.internal.di.modules.FragmentModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = arrayOf(
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        ActivityModule::class,
-        FragmentModule::class
+        ActivityModule::class
     )
 )
 interface AppComponent : AndroidInjector<App> {

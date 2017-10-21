@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
-import net.kwmt27.codesearch.databinding.FragmentMainBinding
+import net.kwmt27.codesearch.databinding.FragmentEventsBinding
 import net.kwmt27.codesearch.presentation.internal.di.FragmentScope
-import net.kwmt27.codesearch.presentation.viewmodel.MainFragmentViewModel
+import net.kwmt27.codesearch.presentation.viewmodel.EventsFragmentViewModel
 import javax.inject.Inject
 
 
@@ -17,17 +17,17 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  */
 @FragmentScope
-class MainFragment : DaggerFragment() {
+class EventsFragment : DaggerFragment() {
 
     companion object Factory {
-        val TAG = MainFragment::class.simpleName!!
-        fun newInstance(): MainFragment = MainFragment()
+        val TAG = EventsFragment::class.simpleName!!
+        fun newInstance(): EventsFragment = EventsFragment()
     }
 
     @Inject
-    lateinit var viewModel: MainFragmentViewModel
+    lateinit var viewModel: EventsFragmentViewModel
 
-    private lateinit var binding:FragmentMainBinding
+    private lateinit var binding:FragmentEventsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class MainFragment : DaggerFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = FragmentEventsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         return binding.root
     }
