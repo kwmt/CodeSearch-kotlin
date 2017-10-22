@@ -10,12 +10,11 @@ import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
 import timber.log.Timber
 import javax.inject.Inject
 
-
 @ActivityScope
-class EventsFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
 
     init {
-        Timber.d("EventsFragmentViewModel is created.")
+        Timber.d("ReposFragmentViewModel is created.")
     }
 
 
@@ -37,7 +36,7 @@ class EventsFragmentViewModel @Inject constructor(private val getEvents: GetEven
     }
 
     fun onClickButton(view: View) {
-        Log.d("EventsFragmentViewModel", "onclick")
+        Log.d("ReposFragmentViewModel", "onclick")
         loadEvents("kwmt", 1)
     }
 

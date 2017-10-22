@@ -2,30 +2,29 @@ package net.kwmt27.codesearch.presentation.view
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
-import net.kwmt27.codesearch.databinding.FragmentEventsBinding
-import net.kwmt27.codesearch.presentation.viewmodel.EventsFragmentViewModel
+import net.kwmt27.codesearch.databinding.FragmentReposBinding
+import net.kwmt27.codesearch.presentation.viewmodel.ReposFragmentViewModel
 import javax.inject.Inject
 
 
 /**
- * A simple [Fragment] subclass.
+ * GitHubリポジトリ一覧
  */
-class EventsFragment : DaggerFragment() {
+class ReposFragment : DaggerFragment() {
 
     companion object Factory {
-        val TAG = EventsFragment::class.simpleName!!
-        fun newInstance(): EventsFragment = EventsFragment()
+        val TAG = ReposFragment::class.simpleName!!
+        fun newInstance(): ReposFragment = ReposFragment()
     }
 
     @Inject
-    lateinit var viewModel: EventsFragmentViewModel
+    lateinit var viewModel: ReposFragmentViewModel
 
-    private lateinit var binding:FragmentEventsBinding
+    private lateinit var binding:FragmentReposBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,7 @@ class EventsFragment : DaggerFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentEventsBinding.inflate(inflater, container, false)
+        binding = FragmentReposBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         return binding.root
     }

@@ -20,14 +20,17 @@ class MainActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var eventsFragment: EventsFragment? = null
+    private var reposFragment: ReposFragment? = null
 
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
+                switchFragment(eventsFragment, EventsFragment.TAG)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
+                switchFragment(reposFragment, ReposFragment.TAG)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -50,17 +53,17 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun initializeFragments(savedInstanceState: Bundle?) {
         val manager = supportFragmentManager
-        eventsFragment = manager.findFragmentByTag(EventsFragment.TAG) as EventsFragment?
+        eventsFragment = manager.findFragmentByTag(EventsFragment.TAG) as EventsFragment? ?: EventsFragment.newInstance()
+        reposFragment = manager.findFragmentByTag(ReposFragment.TAG) as ReposFragment? ?: ReposFragment.newInstance()
 
-        if (eventsFragment == null) {
-            eventsFragment = EventsFragment.newInstance()
-        }
+
         if (savedInstanceState == null) {
-            switchFragment(eventsFragment!!, EventsFragment.TAG)
+            switchFragment(eventsFragment, EventsFragment.TAG)
         }
     }
 
-    private fun switchFragment(fragment: Fragment, tag: String): Boolean {
+    private fun switchFragment(fragment: Fragment?, tag: String): Boolean {
+        fragment ?: return false
         if (fragment.isAdded) {
             return false
         }
