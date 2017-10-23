@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="net.kwmt27.codesearch.presentation.viewmodel.EventsFragmentViewModel"
+            type="net.kwmt27.codesearch.presentation.viewmodel.EventsViewModel"
             />
     </data>
 
@@ -25,6 +25,14 @@
             android:onClick="@{viewModel::onClickButton}"
             android:text="Fragment Button"
             />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 </layout>
 

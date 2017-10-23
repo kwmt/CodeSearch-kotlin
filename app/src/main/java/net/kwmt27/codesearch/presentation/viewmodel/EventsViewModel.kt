@@ -1,6 +1,8 @@
 package net.kwmt27.codesearch.presentation.viewmodel
 
 import android.databinding.BaseObservable
+import android.databinding.ObservableArrayList
+import android.databinding.ObservableList
 import android.util.Log
 import android.view.View
 import net.kwmt27.codesearch.domain.interactor.BaseObserver
@@ -12,10 +14,14 @@ import javax.inject.Inject
 
 
 @ActivityScope
-class EventsFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+
+    val eventViewModels:ObservableList<EventViewModel>
 
     init {
-        Timber.d("EventsFragmentViewModel is created.")
+        Timber.d("EventsViewModel is created.")
+        eventViewModels = ObservableArrayList()
+
     }
 
 
@@ -37,7 +43,7 @@ class EventsFragmentViewModel @Inject constructor(private val getEvents: GetEven
     }
 
     fun onClickButton(view: View) {
-        Log.d("EventsFragmentViewModel", "onclick")
+        Log.d("EventsViewModel", "onclick")
         loadEvents("kwmt", 1)
     }
 
@@ -48,11 +54,20 @@ class EventsFragmentViewModel @Inject constructor(private val getEvents: GetEven
             e.printStackTrace()
         }
 
-        override fun onSuccess(t: List<EventModel>) {
-            Timber.d("onSuccess" + t)
+        override fun onSuccess(list: List<EventModel>) {
+            Timber.d("onSuccess" + list)
             // TODO: render
+            val eventViewModels = list.map {
+                EventViewModel(it.itemType.name)
+            }
+            render(eventViewModels)
         }
 
+    }
+
+    private fun render(list:List<EventViewModel>) {
+        eventViewModels.clear()
+        eventViewModels.addAll(list)
     }
 
 

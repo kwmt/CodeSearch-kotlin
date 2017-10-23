@@ -1,14 +1,25 @@
 package net.kwmt27.codesearch.presentation.view
 
 
+import android.content.Context
+import android.databinding.DataBindingUtil
+import android.databinding.ObservableList
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
+import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.databinding.FragmentEventsBinding
-import net.kwmt27.codesearch.presentation.viewmodel.EventsFragmentViewModel
+import net.kwmt27.codesearch.databinding.ViewEventCellBinding
+import net.kwmt27.codesearch.domain.model.GithubRepoModel
+import net.kwmt27.codesearch.presentation.view.adapter.BaseRecyclerAdapter
+import net.kwmt27.codesearch.presentation.viewmodel.EventViewModel
+import net.kwmt27.codesearch.presentation.viewmodel.EventsViewModel
 import javax.inject.Inject
 
 
@@ -22,10 +33,21 @@ class EventsFragment : DaggerFragment() {
         fun newInstance(): EventsFragment = EventsFragment()
     }
 
-    @Inject
-    lateinit var viewModel: EventsFragmentViewModel
+    interface OnLinkClickListener {
+        /**
+         *
+         * @param title
+         * @param url
+         * @param githubRepoModel nullならレポジトリ検索できないので、検索メニューを非表示にする
+         */
+        fun onLinkClick(title: String, url: String, githubRepoModel: GithubRepoModel)
+    }
 
-    private lateinit var binding:FragmentEventsBinding
+
+    @Inject
+    lateinit var viewModel: EventsViewModel
+
+    private lateinit var binding: FragmentEventsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +59,52 @@ class EventsFragment : DaggerFragment() {
         // Inflate the layout for this fragment
         binding = FragmentEventsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
+
+        initView()
+
         return binding.root
     }
 
+    private fun initView() {
+        binding.recyclerView.apply {
+            this.adapter = Adapter(context, viewModel.eventViewModels)
+            this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
 
 
+    }
+
+    class BindingHolder<out T : ViewDataBinding>(val context: Context, val parent: ViewGroup, layoutResId: Int) : RecyclerView.ViewHolder(
+            LayoutInflater.from(context).inflate(layoutResId, parent, false)
+    ) {
+        val binding: T = DataBindingUtil.bind(itemView)
+    }
+
+
+    inner class Adapter(val ctx: Context, list: ObservableList<EventViewModel>) :
+            BaseRecyclerAdapter<EventViewModel, BindingHolder<ViewEventCellBinding>>(ctx, list) {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<ViewEventCellBinding> {
+            return BindingHolder(ctx, parent, R.layout.view_event_cell)
+        }
+
+        override fun onBindViewHolder(holder: BindingHolder<ViewEventCellBinding>, position: Int) {
+            holder.binding.run {
+                this.viewModel = getItem(position)
+                this.executePendingBindings()
+            }
+        }
+    }
+
+
+//    inner class BindingHolder<T : ViewDataBinding>
+//    (@NonNull context: Context, @NonNull parent: ViewGroup,
+//           @LayoutRes layoutResId: Int) : RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(layoutResId, parent, false)) {
+//
+//        val binding: T
+//
+//        init {
+//            binding = DataBindingUtil.bind(itemView)
+//        }
+//    }
 }
