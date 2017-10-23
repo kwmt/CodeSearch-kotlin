@@ -52,6 +52,7 @@ class EventsFragment : DaggerFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.initialize("kwmt", 1)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -84,6 +85,31 @@ class EventsFragment : DaggerFragment() {
     inner class Adapter(val ctx: Context, list: ObservableList<EventViewModel>) :
             BaseRecyclerAdapter<EventViewModel, BindingHolder<ViewEventCellBinding>>(ctx, list) {
 
+        init {
+            list.addOnListChangedCallback(object : ObservableList.OnListChangedCallback<ObservableList<EventViewModel>>() {
+                override fun onChanged(contributorViewModels: ObservableList<EventViewModel>) {
+                    notifyDataSetChanged()
+                }
+
+                override fun onItemRangeChanged(contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int) {
+                    notifyItemRangeChanged(i, i1)
+                }
+
+                override fun onItemRangeInserted(contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int) {
+                    notifyItemRangeInserted(i, i1)
+                }
+
+                override fun onItemRangeMoved(contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int,
+                                              i2: Int) {
+                    notifyItemMoved(i, i1)
+                }
+
+                override fun onItemRangeRemoved(contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int) {
+                    notifyItemRangeRemoved(i, i1)
+                }
+            })
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<ViewEventCellBinding> {
             return BindingHolder(ctx, parent, R.layout.view_event_cell)
         }
@@ -94,6 +120,8 @@ class EventsFragment : DaggerFragment() {
                 this.executePendingBindings()
             }
         }
+
+
     }
 
 
