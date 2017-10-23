@@ -46,3 +46,10 @@ https://qiita.com/egugue/items/f1f35c250f7a25768751
 
 GSONが有名ですが、Kotlinとの相性が良くないとのこと。
 MoshiだとKotlinをサポートしている。Square製なのでMoshiを採用する
+
+## 設計参考
+
+* メイン
+    * https://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/
+* MVVMなど
+    * https://github.com/DroidKaigi/conference-app-2017/
