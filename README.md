@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/kwmt/CodeSearch-kotlin/tree/master.svg?style=svg&circle-token=d377bd718687ac8360bcab92173b31f8aa786ce4)](https://circleci.com/gh/kwmt/CodeSearch-kotlin/tree/master)
 
 ## テストについて
 
