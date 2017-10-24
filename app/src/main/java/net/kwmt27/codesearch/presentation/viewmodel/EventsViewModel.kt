@@ -12,7 +12,9 @@ import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
 import timber.log.Timber
 import javax.inject.Inject
 
-
+/**
+ * イベント一覧に対応するViewModel
+ */
 @ActivityScope
 class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
 

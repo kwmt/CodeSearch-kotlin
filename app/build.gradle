@@ -150,4 +150,5 @@ repositories {
 dokka {
     outputFormat = 'html'
     outputDirectory = "$buildDir/javadoc"
+    includes = ['doc.md']
 }
