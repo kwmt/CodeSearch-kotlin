@@ -1,6 +1,6 @@
 package net.kwmt27.codesearch.domain.model.valueobject
 
-data class GithubUser(val name:String) {
+data class GithubUser(val name:String, val imageUrl:String) {
 
 
 }

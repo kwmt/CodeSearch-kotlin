@@ -12,7 +12,7 @@ class EventEntityDataMapper @Inject constructor() {
     fun transform(events: List<EventEntity>) : List<EventModel> {
         return events.map { EventModel().apply {
             isPublic = true
-            githubUser = GithubUser(it.actor.displayLogin)
+            githubUser = GithubUser(it.actor.displayLogin, it.actor.avatarUrl)
         } }
 
 

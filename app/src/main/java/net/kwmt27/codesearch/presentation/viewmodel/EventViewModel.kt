@@ -2,11 +2,23 @@ package net.kwmt27.codesearch.presentation.viewmodel
 
 import android.databinding.BaseObservable
 import android.view.View
+import net.kwmt27.codesearch.domain.model.valueobject.GithubUser
 
 /**
  * イベント一覧の各リストアイテムに対応するViewModel
  */
-class EventViewModel(val name:String):BaseObservable(), ViewModel {
+class EventViewModel(githubUser: GithubUser):BaseObservable(), ViewModel {
+
+    val name:String
+    val imageUrl:String
+
+    init {
+        name = githubUser.name
+        imageUrl = githubUser.imageUrl
+    }
+
+
+
     override fun destroy() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

@@ -7,7 +7,7 @@ open class EventModel {
     var itemType: ItemType = ItemType.Normal
     var isPublic: Boolean = false
 
-    var githubUser: GithubUser = GithubUser("")
+    var githubUser: GithubUser = GithubUser("", "")
 
 
 }

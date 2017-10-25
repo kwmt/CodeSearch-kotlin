@@ -60,7 +60,7 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
             Timber.d("onSuccess" + list)
             // TODO: render
             val eventViewModels = list.map {
-                EventViewModel(it.githubUser.name).apply {  }
+                EventViewModel(it.githubUser).apply {  }
             }
             render(eventViewModels)
         }
