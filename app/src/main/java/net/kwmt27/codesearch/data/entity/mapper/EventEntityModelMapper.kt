@@ -6,8 +6,11 @@ import net.kwmt27.codesearch.domain.model.valueobject.GithubUser
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * [EventEntity](net.kwmt27.codesearch.data.entity.EventEntity)から[EvnetModel](net.kwmt27.codesearch.domain.model.EvnetModel)に変換する
+ */
 @Singleton
-class EventEntityDataMapper @Inject constructor() {
+class EventEntityModelMapper @Inject constructor() {
 
     fun transform(events: List<EventEntity>) : List<EventModel> {
         return events.map { EventModel().apply {
