@@ -53,3 +53,10 @@ MoshiだとKotlinをサポートしている。Square製なのでMoshiを採用�
     * https://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/
 * MVVMなど
     * https://github.com/DroidKaigi/conference-app-2017/
+
+
+## dagger
+
+dagger version 2.12
+activityをinjectする方法
+https://qiita.com/ryugoo/items/c58fb413882f482f7642

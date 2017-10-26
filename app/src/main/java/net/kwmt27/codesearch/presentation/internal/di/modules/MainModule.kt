@@ -16,6 +16,7 @@ abstract class MainModule {
     @ContributesAndroidInjector
     internal abstract fun contributeReposFragment(): ReposFragment
 
+
 }
 //@Module(subcomponents = arrayOf(MainModule.MainFragmentSubComponent::class))
 //abstract class MainModule {

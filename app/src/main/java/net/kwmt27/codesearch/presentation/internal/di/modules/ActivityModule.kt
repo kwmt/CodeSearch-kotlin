@@ -1,46 +1,22 @@
 package net.kwmt27.codesearch.presentation.internal.di.modules
 
+import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
-import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
-import net.kwmt27.codesearch.presentation.view.MainActivity
+import dagger.Provides
+
 
 /**
- * ActivityへのInject
- *
- *
- *
- * ## 参考
- * - https://google.github.io/dagger/android.html
- * - http://y-anz-m.blogspot.jp/2017/07/android-dagger-3-android-support.html
- * - https://qiita.com/satorufujiwara/items/0f95ccfc3820d3ee1370
+ * Created by kwmt on 2017/10/26.
  */
 @Module
-abstract class ActivityModule {
+class ActivityModule(val activity: AppCompatActivity) {
 
-    @ActivityScope
-    @ContributesAndroidInjector(modules = arrayOf(MainModule::class))
-    internal abstract fun contributeMainActivity(): MainActivity
+    @Provides
+    fun provideLayoutInflater(): LayoutInflater {
+        return LayoutInflater.from(activity)
+    }
 
+    @Provides
+    fun provideAppCompatActivity() : AppCompatActivity = activity
 }
-
-/**
- * [@SubComponent]を使うパターン
- */
-//@Module(subcomponents = arrayOf(ActivityModule.MainActivitySubComponent::class))
-//abstract class ActivityModule {
-//
-//    @Binds
-//    @IntoMap
-//    @ActivityKey(MainActivity::class)
-//    internal abstract fun bindMainActivityAndroidInjectorFactory(
-//            builder: ActivityModule.MainActivitySubComponent.Builder): AndroidInjector.Factory<out Activity>
-//
-//    @ActivityScope
-//    @Subcomponent
-//    interface MainActivitySubComponent:AndroidInjector<MainActivity> {
-//        @Subcomponent.Builder
-//        abstract class Builder : AndroidInjector.Builder<MainActivity>()
-//    }
-//
-//}

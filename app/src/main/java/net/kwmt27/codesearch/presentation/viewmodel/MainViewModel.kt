@@ -27,11 +27,11 @@ import javax.inject.Inject
  *
  */
 @ActivityScope
-class MainViewModel @Inject
-constructor(val navigator: Navigator) : BaseObservable() {
+class MainViewModel @Inject constructor(val navigator: Navigator) : BaseObservable() {
 
     fun onClickButton(view: View) {
         Log.d("MainViewModel", "onclick")
+        navigator.startMain2Activity()
     }
 
 }
