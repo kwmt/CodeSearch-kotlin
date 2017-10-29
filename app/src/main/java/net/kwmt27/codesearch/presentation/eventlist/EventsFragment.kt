@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.view
+package net.kwmt27.codesearch.presentation.eventlist
 
 
 import android.content.Context
@@ -19,8 +19,6 @@ import net.kwmt27.codesearch.databinding.FragmentEventsBinding
 import net.kwmt27.codesearch.databinding.ViewEventCellBinding
 import net.kwmt27.codesearch.domain.model.GithubRepoModel
 import net.kwmt27.codesearch.presentation.view.adapter.BaseRecyclerAdapter
-import net.kwmt27.codesearch.presentation.viewmodel.EventViewModel
-import net.kwmt27.codesearch.presentation.viewmodel.EventsViewModel
 import timber.log.Timber
 import javax.inject.Inject
 

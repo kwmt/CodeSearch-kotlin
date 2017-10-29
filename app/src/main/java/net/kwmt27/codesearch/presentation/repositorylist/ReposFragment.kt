@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.view
+package net.kwmt27.codesearch.presentation.repositorylist
 
 
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
 import net.kwmt27.codesearch.databinding.FragmentReposBinding
-import net.kwmt27.codesearch.presentation.viewmodel.ReposFragmentViewModel
 import javax.inject.Inject
 
 

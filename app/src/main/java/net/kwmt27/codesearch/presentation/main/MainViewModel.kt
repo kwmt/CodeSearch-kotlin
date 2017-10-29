@@ -1,9 +1,9 @@
-package net.kwmt27.codesearch.presentation.viewmodel
+package net.kwmt27.codesearch.presentation.main
 
 import android.databinding.BaseObservable
 import android.util.Log
 import android.view.View
-import net.kwmt27.codesearch.di.ActivityScope
+import net.kwmt27.codesearch.application.di.ActivityScope
 import javax.inject.Inject
 
 /**

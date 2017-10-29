@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.view
+package net.kwmt27.codesearch.presentation.main
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -8,7 +8,8 @@ import android.support.v4.app.FragmentTransaction
 import dagger.android.support.DaggerAppCompatActivity
 import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.databinding.ActivityMainBinding
-import net.kwmt27.codesearch.presentation.viewmodel.MainViewModel
+import net.kwmt27.codesearch.presentation.eventlist.EventsFragment
+import net.kwmt27.codesearch.presentation.repositorylist.ReposFragment
 import javax.inject.Inject
 
 

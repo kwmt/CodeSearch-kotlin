@@ -2,8 +2,8 @@ package net.kwmt27.codesearch.application.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.kwmt27.codesearch.di.FragmentScope
-import net.kwmt27.codesearch.presentation.view.EventsFragment
+import net.kwmt27.codesearch.application.di.FragmentScope
+import net.kwmt27.codesearch.presentation.eventlist.EventsFragment
 
 @Module
 abstract class EventsFragmentProvider {

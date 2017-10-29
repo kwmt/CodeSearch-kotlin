@@ -3,9 +3,9 @@ package net.kwmt27.codesearch.application.di.modules
 import android.support.v4.app.Fragment
 import dagger.Module
 import dagger.Provides
-import net.kwmt27.codesearch.presentation.navigator.Navigator
-import net.kwmt27.codesearch.presentation.view.EventsFragment
-import net.kwmt27.codesearch.presentation.view.MainActivity
+import net.kwmt27.codesearch.presentation.eventlist.Navigator
+import net.kwmt27.codesearch.presentation.eventlist.EventsFragment
+import net.kwmt27.codesearch.presentation.main.MainActivity
 
 
 @Module

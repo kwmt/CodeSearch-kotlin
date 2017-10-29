@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.view
+package net.kwmt27.codesearch.presentation
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

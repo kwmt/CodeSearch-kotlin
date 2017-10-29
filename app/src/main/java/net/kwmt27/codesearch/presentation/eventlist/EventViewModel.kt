@@ -1,8 +1,9 @@
-package net.kwmt27.codesearch.presentation.viewmodel
+package net.kwmt27.codesearch.presentation.eventlist
 
 import android.databinding.BaseObservable
 import android.view.View
 import net.kwmt27.codesearch.domain.model.valueobject.GithubUser
+import net.kwmt27.codesearch.presentation.ViewModel
 
 /**
  * イベント一覧の各リストアイテムに対応するViewModel

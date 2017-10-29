@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.view.adapter
+package net.kwmt27.codesearch.presentation.adapter
 
 
 import android.content.Context

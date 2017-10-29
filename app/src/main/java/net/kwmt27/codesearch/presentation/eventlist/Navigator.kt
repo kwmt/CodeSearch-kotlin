@@ -1,8 +1,8 @@
-package net.kwmt27.codesearch.presentation.navigator
+package net.kwmt27.codesearch.presentation.eventlist
 
 import android.content.Intent
 import android.support.v4.app.Fragment
-import net.kwmt27.codesearch.presentation.view.Main2Activity
+import net.kwmt27.codesearch.presentation.Main2Activity
 import javax.inject.Inject
 
 /**
