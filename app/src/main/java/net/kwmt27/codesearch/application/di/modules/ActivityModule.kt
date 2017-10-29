@@ -1,8 +1,8 @@
-package net.kwmt27.codesearch.presentation.internal.di.modules
+package net.kwmt27.codesearch.application.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.kwmt27.codesearch.presentation.internal.di.ActivityScope
+import net.kwmt27.codesearch.di.ActivityScope
 import net.kwmt27.codesearch.presentation.view.MainActivity
 
 /**

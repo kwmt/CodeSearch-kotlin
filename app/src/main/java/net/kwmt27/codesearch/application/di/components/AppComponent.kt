@@ -1,12 +1,12 @@
-package net.kwmt27.codesearch.presentation.internal.di.components
+package net.kwmt27.codesearch.application.di.components
 
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import net.kwmt27.codesearch.App
-import net.kwmt27.codesearch.presentation.internal.di.modules.ActivityModule
-import net.kwmt27.codesearch.presentation.internal.di.modules.AppModule
+import net.kwmt27.codesearch.di.modules.ActivityModule
+import net.kwmt27.codesearch.di.modules.AppModule
 import javax.inject.Singleton
 
 @Singleton

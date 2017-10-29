@@ -1,7 +1,7 @@
-package net.kwmt27.codesearch.presentation.internal.di.modules
+package net.kwmt27.codesearch.application.di.modules
 
 import dagger.Module
-import net.kwmt27.codesearch.presentation.internal.di.FragmentScope
+import net.kwmt27.codesearch.di.FragmentScope
 
 @FragmentScope
 @Module

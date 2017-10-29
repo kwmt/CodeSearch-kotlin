@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.internal.di.modules
+package net.kwmt27.codesearch.application.di.modules
 
 import android.support.v4.app.Fragment
 import dagger.Module

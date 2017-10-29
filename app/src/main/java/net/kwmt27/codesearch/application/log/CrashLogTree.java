@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.log;
+package net.kwmt27.codesearch.application.log;
 
 import timber.log.Timber;
 
