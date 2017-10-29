@@ -2,6 +2,7 @@ package net.kwmt27.codesearch.presentation.view
 
 
 import android.content.Context
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableList
 import android.databinding.ViewDataBinding
@@ -20,6 +21,7 @@ import net.kwmt27.codesearch.domain.model.GithubRepoModel
 import net.kwmt27.codesearch.presentation.view.adapter.BaseRecyclerAdapter
 import net.kwmt27.codesearch.presentation.viewmodel.EventViewModel
 import net.kwmt27.codesearch.presentation.viewmodel.EventsViewModel
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -27,6 +29,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  */
 class EventsFragment : DaggerFragment() {
+
 
     companion object Factory {
         val TAG = EventsFragment::class.simpleName!!
@@ -64,6 +67,12 @@ class EventsFragment : DaggerFragment() {
         initView()
 
         return binding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Timber.d("requestCode:" + requestCode + ", resultCode:" +  resultCode +", data:" + data)
+        viewModel.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun initView() {

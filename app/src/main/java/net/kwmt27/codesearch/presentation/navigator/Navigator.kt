@@ -1,17 +1,24 @@
 package net.kwmt27.codesearch.presentation.navigator
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import net.kwmt27.codesearch.presentation.view.EventsFragment
 import net.kwmt27.codesearch.presentation.view.Main2Activity
 import javax.inject.Inject
 
 /**
  * ActivityのSubComponentとしてFactory
  */
-class Navigator @Inject constructor(val activity:AppCompatActivity) {
+class Navigator @Inject constructor(val fragment: EventsFragment) {
+//    @Inject @Named("events")
+//    lateinit var fragment:EventsFragment
 
-    fun startMain2Activity() {
-        activity.startActivity(Intent(activity, Main2Activity::class.java))
+    fun startActivityEventsFragmentToMain2Activity() {
+//        startMain2Activity(EventsFragment.TAG)
+    }
+
+     fun startMain2Activity(requestCode:Int) {
+        //val fragment = manager.findFragmentByTag(tag)
+        fragment.startActivityForResult(Intent(fragment.context, Main2Activity::class.java), requestCode)
     }
 
 }

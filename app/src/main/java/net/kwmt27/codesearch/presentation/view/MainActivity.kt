@@ -51,6 +51,7 @@ class MainActivity : DaggerAppCompatActivity() {
         binding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
+
     private fun initializeFragments(savedInstanceState: Bundle?) {
         val manager = supportFragmentManager
         eventsFragment = manager.findFragmentByTag(EventsFragment.TAG) as EventsFragment? ?: EventsFragment.newInstance()
