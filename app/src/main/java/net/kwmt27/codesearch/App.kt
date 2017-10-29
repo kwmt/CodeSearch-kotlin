@@ -3,7 +3,7 @@ package net.kwmt27.codesearch
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import net.kwmt27.codesearch.application.log.CrashLogTree
-import net.kwmt27.codesearch.di.components.DaggerAppComponent
+import net.kwmt27.codesearch.application.di.components.DaggerAppComponent
 import timber.log.Timber
 
 
