@@ -7,7 +7,7 @@ interface EventsRepository {
     /**
      * イベントリストを取得する
      *
-     * [net.kwmt27.codesearch.data.entity.EventEntity]から[EventModel]に変換する
+     * [net.kwmt27.codesearch.infrastructure.entity.EventEntity]から[EventModel]に変換する
      * @param user 誰のイベントリストを取得するかを指定する
      * @param page 何ページ目のイベントリストを取得するかを指定する
      */

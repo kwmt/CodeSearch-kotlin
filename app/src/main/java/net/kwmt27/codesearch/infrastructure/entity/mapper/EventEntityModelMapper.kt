@@ -1,6 +1,6 @@
-package net.kwmt27.codesearch.data.entity.mapper
+package net.kwmt27.codesearch.infrastructure.entity.mapper
 
-import net.kwmt27.codesearch.data.entity.EventEntity
+import net.kwmt27.codesearch.infrastructure.entity.EventEntity
 import net.kwmt27.codesearch.domain.model.EventModel
 import net.kwmt27.codesearch.domain.model.valueobject.GithubUser
 import javax.inject.Inject

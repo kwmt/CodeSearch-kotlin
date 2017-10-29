@@ -1,8 +1,8 @@
-package net.kwmt27.codesearch.data.api
+package net.kwmt27.codesearch.infrastructure.api
 
 
 import io.reactivex.Single
-import net.kwmt27.codesearch.data.entity.EventEntity
+import net.kwmt27.codesearch.infrastructure.entity.EventEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.data.entity
+package net.kwmt27.codesearch.infrastructure.entity
 
 import com.squareup.moshi.Json
 

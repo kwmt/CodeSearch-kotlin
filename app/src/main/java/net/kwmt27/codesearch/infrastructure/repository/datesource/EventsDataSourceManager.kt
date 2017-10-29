@@ -1,7 +1,7 @@
-package net.kwmt27.codesearch.data.repository.datesource
+package net.kwmt27.codesearch.infrastructure.repository.datesource
 
 import io.reactivex.Single
-import net.kwmt27.codesearch.data.entity.EventEntity
+import net.kwmt27.codesearch.infrastructure.entity.EventEntity
 import javax.inject.Inject
 
 class EventsDataSourceManager @Inject constructor(private val eventsRemoteDataSource: EventsRemoteDataSource) {

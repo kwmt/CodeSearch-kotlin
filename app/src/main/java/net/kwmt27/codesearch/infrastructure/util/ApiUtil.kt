@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.data.util
+package net.kwmt27.codesearch.infrastructure.util
 
 import okhttp3.Request
 import okhttp3.RequestBody

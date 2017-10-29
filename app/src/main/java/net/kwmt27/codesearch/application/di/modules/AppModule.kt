@@ -9,9 +9,9 @@ import dagger.Module
 import dagger.Provides
 import net.kwmt27.codesearch.App
 import net.kwmt27.codesearch.BuildConfig
-import net.kwmt27.codesearch.data.api.GithubApi
-import net.kwmt27.codesearch.data.repository.EventsDataRepository
-import net.kwmt27.codesearch.data.util.ApiUtil
+import net.kwmt27.codesearch.infrastructure.api.GithubApi
+import net.kwmt27.codesearch.infrastructure.repository.EventsDataRepository
+import net.kwmt27.codesearch.infrastructure.util.ApiUtil
 import net.kwmt27.codesearch.domain.repository.EventsRepository
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
