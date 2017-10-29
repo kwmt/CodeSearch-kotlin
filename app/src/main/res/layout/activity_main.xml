@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="net.kwmt27.codesearch.presentation.viewmodel.MainViewModel"
+            type="net.kwmt27.codesearch.presentation.main.MainViewModel"
             />
     </data>
 

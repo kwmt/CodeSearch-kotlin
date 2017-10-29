@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="net.kwmt27.codesearch.presentation.viewmodel.EventsViewModel"
+            type="net.kwmt27.codesearch.presentation.eventlist.EventsViewModel"
             />
     </data>
 
