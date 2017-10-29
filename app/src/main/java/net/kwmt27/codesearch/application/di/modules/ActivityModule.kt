@@ -3,6 +3,7 @@ package net.kwmt27.codesearch.application.di.modules
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import net.kwmt27.codesearch.application.di.ActivityScope
+import net.kwmt27.codesearch.presentation.eventlist.di.EventsFragmentProvider
 import net.kwmt27.codesearch.presentation.main.MainActivity
 
 /**

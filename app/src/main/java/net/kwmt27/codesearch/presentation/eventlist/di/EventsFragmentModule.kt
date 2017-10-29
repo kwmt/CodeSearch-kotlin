@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.application.di.modules
+package net.kwmt27.codesearch.presentation.eventlist.di
 
 import dagger.Module
 import net.kwmt27.codesearch.application.di.FragmentScope
