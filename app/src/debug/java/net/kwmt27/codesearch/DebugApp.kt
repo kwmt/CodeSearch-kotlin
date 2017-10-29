@@ -1,6 +1,7 @@
 package net.kwmt27.codesearch
 
 import com.deploygate.sdk.DeployGate
+import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.application.log.DeploygateLogTree
 import timber.log.Timber
 

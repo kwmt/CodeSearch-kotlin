@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch
+package net.kwmt27.codesearch.application
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication

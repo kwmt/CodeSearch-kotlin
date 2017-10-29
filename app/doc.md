@@ -1,6 +1,9 @@
 # Module app
 
 Android Application
+# Package net.kwmt27.codesearch.application
+
+アプリケーション全体に関わるパッケージ。Applicationクラスや、di、logなどを置く。
 
 # Package net.kwmt27.codesearch.presentation
 

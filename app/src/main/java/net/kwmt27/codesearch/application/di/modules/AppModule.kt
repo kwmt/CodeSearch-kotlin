@@ -7,7 +7,7 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import net.kwmt27.codesearch.App
+import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.BuildConfig
 import net.kwmt27.codesearch.infrastructure.api.GithubApi
 import net.kwmt27.codesearch.infrastructure.repository.EventsDataRepository
