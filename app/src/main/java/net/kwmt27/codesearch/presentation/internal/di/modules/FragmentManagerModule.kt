@@ -1,5 +1,6 @@
 package net.kwmt27.codesearch.presentation.internal.di.modules
 
+import android.support.v4.app.Fragment
 import dagger.Module
 import dagger.Provides
 import net.kwmt27.codesearch.presentation.navigator.Navigator
@@ -12,7 +13,7 @@ class FragmentManagerModule {
 
 
     @Provides
-    fun provideFragmentManager(mainActivity: MainActivity) : EventsFragment = mainActivity.supportFragmentManager.findFragmentByTag(EventsFragment.TAG) as EventsFragment
+    fun provideFragmentManager(mainActivity: MainActivity) : Fragment = mainActivity.supportFragmentManager.findFragmentByTag(EventsFragment.TAG)
 
 //    @Named("events")
 //    @Provides
@@ -21,5 +22,5 @@ class FragmentManagerModule {
 //    @ActivityScope
 //    @FragmentScope
     @Provides
-    fun provideNavigator(fragment: EventsFragment): Navigator = Navigator(fragment)
+    fun provideNavigator(fragment: Fragment): Navigator = Navigator(fragment)
 }

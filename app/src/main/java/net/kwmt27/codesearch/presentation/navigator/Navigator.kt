@@ -1,14 +1,14 @@
 package net.kwmt27.codesearch.presentation.navigator
 
 import android.content.Intent
-import net.kwmt27.codesearch.presentation.view.EventsFragment
+import android.support.v4.app.Fragment
 import net.kwmt27.codesearch.presentation.view.Main2Activity
 import javax.inject.Inject
 
 /**
  * ActivityのSubComponentとしてFactory
  */
-class Navigator @Inject constructor(val fragment: EventsFragment) {
+class Navigator @Inject constructor(val fragment: Fragment) {
 //    @Inject @Named("events")
 //    lateinit var fragment:EventsFragment
 
