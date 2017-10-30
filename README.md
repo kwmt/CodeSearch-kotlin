@@ -28,6 +28,17 @@ https://discuss.kotlinlang.org/t/what-assertions-library-do-you-use/1809
 
 でも、`assertEquals` でいい気がしてきた
 
+### Mockito2の設定
+
+kotlinのクラスはデフォルトfinalクラスのため、Mockitoを使ってなにも設定しないと、final classはモック化できないというエラーになります。
+そのため、
+```
+app/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker
+```
+ファイルを作成しています。
+
+* 参考 [How to mock final classes on Kotlin using Mockito 2 (KAD 23)](https://antonioleiva.com/mockito-2-kotlin/)
+
 
 ## 命名規則
 
