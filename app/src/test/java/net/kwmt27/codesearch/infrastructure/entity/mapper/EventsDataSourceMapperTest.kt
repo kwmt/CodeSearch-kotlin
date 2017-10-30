@@ -30,7 +30,7 @@ class EventsDataSourceMapperTest {
     fun testTransformEventModel() {
         val eventsModel = eventsDataSourceMapper.transform(createFakeEvents())
 
-        assertEquals(eventsModel.size, 2)
+        assertEquals(eventsModel.size, 1)
         assertEquals(eventsModel.get(0).githubUser.name, FAKE_GITHUBUSER_DISPLAY_LOGIN)
         // TODO:その他のプロパティのテスト
     }
