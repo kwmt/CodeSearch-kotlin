@@ -131,7 +131,7 @@ dependencies {
     // Test
     // Dependencies for local unit tests
     testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:2.7.0"
+    testCompile "org.mockito:mockito-core:2.11.0"
 
     kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
