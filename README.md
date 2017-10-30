@@ -40,7 +40,9 @@ app/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker
 * 参考 [How to mock final classes on Kotlin using Mockito 2 (KAD 23)](https://antonioleiva.com/mockito-2-kotlin/)
 
 
-## 命名規則
+## コーディングルール
+
+* 基本 https://qiita.com/Reyurnible/items/be68b2207e33a0b78936
 
 * リストは複数形にする（Listは命名は使わない）
     * たとえば、EventならEvents
