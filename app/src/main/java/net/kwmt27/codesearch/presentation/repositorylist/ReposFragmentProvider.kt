@@ -1,11 +1,10 @@
-package net.kwmt27.codesearch.application.di.modules
+package net.kwmt27.codesearch.presentation.repositorylist
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import net.kwmt27.codesearch.application.di.FragmentScope
-import net.kwmt27.codesearch.presentation.repositorylist.ReposFragment
 
-@Module
+@Module(includes = arrayOf(ReposFragmentModule::class))
 abstract class ReposFragmentProvider {
 
     @FragmentScope
