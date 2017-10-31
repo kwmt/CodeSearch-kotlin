@@ -7,12 +7,12 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.BuildConfig
+import net.kwmt27.codesearch.application.App
+import net.kwmt27.codesearch.domain.repository.EventsRepository
 import net.kwmt27.codesearch.infrastructure.api.GithubApi
 import net.kwmt27.codesearch.infrastructure.repository.EventsDataRepository
-import net.kwmt27.codesearch.infrastructure.util.ApiUtil
-import net.kwmt27.codesearch.domain.repository.EventsRepository
+import net.kwmt27.codesearch.infrastructure.extension.printCurlString
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -67,11 +67,8 @@ class AppModule() {
     private class CurlHttpLoggingInterceptor : Interceptor {
 
         @Throws(IOException::class)
-        override fun intercept(@NonNull chain: Interceptor.Chain): Response {
-            val request = chain.request()
-            ApiUtil.printCurlString(request)
-            return chain.proceed(request)
-        }
+        override fun intercept(@NonNull chain: Interceptor.Chain): Response =
+                chain.proceed(chain.request().apply { printCurlString() })
     }
 
 }
