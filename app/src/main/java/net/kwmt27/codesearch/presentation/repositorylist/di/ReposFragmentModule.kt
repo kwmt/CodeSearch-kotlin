@@ -19,6 +19,6 @@ class ReposFragmentModule {
 
     @Named("ReposFragmentNavigator")
     @Provides
-    fun provideNavigator(fragment: Fragment): Navigator = Navigator(fragment)
+    fun provideNavigator(@Named("ReposFragment") fragment: Fragment): Navigator = Navigator(fragment)
 
 }

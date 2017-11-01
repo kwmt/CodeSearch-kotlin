@@ -19,6 +19,6 @@ class EventsFragmentModule {
 
     @Provides
     @Named("EventsFragmentNavigator")
-    fun provideNavigator(fragment: Fragment): Navigator = Navigator(fragment)
+    fun provideNavigator(@Named("EventsFragment") fragment: Fragment): Navigator = Navigator(fragment)
 
 }
