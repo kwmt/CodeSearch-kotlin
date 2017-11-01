@@ -25,11 +25,11 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
 
     @Inject
     @Named("EventsFragmentNavigator")
-    lateinit var navigator: Navigator
+    lateinit var eventsNavigator: EventsNavigator
 
 
 //    @Inject
-//    lateinit var navigator:Navigator
+//    lateinit var eventsNavigator:ReposNavigator
 
     val eventViewModels:ObservableList<EventViewModel>
 
@@ -60,8 +60,8 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
     fun onClickButton(view: View) {
         Log.d("EventsViewModel", "onclick")
         //loadEvents("kwmt", 1)
-//        navigator.startActivityEventsFragmentToMain2Activity()
-        navigator.startMain2Activity(REQUET_CODE)
+//        eventsNavigator.startActivityEventsFragmentToMain2Activity()
+        eventsNavigator.startMain2Activity(REQUET_CODE)
     }
 
 

@@ -8,7 +8,7 @@ import net.kwmt27.codesearch.domain.interactor.BaseObserver
 import net.kwmt27.codesearch.domain.interactor.GetEvents
 import net.kwmt27.codesearch.domain.model.EventModel
 import net.kwmt27.codesearch.presentation.ViewModel
-import net.kwmt27.codesearch.presentation.eventlist.Navigator
+import net.kwmt27.codesearch.presentation.eventlist.EventsNavigator
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
@@ -21,7 +21,7 @@ class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvent
 
     @Inject
     @Named("ReposFragmentNavigator")
-    lateinit var navigator: Navigator
+    lateinit var eventsNavigator: EventsNavigator
 
 
     init {

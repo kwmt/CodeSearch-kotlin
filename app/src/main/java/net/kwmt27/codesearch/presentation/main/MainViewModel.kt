@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor() : BaseObservable() {
 
     fun onClickButton(view: View) {
         Log.d("MainViewModel", "onclick")
-        //navigator.startMain2Activity()
+        //eventsNavigator.startMain2Activity()
     }
 
 }
