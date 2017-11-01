@@ -30,7 +30,7 @@ class ReposFragment : DaggerFragment() {
         viewModel.initialize("kwmt", 1)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = FragmentReposBinding.inflate(inflater, container, false)
