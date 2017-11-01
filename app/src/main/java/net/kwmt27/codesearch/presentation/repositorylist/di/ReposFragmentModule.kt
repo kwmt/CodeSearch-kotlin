@@ -7,6 +7,7 @@ import dagger.Provides
 import net.kwmt27.codesearch.application.di.FragmentScope
 import net.kwmt27.codesearch.presentation.eventlist.Navigator
 import net.kwmt27.codesearch.presentation.repositorylist.ReposFragment
+import javax.inject.Named
 
 @FragmentScope
 @Module
@@ -16,6 +17,7 @@ class ReposFragmentModule {
     fun provideFragment(fragmentManager: FragmentManager): Fragment = fragmentManager.findFragmentByTag(ReposFragment.TAG)
 
     @Provides
+    @Named("ReposFragmentNavigator")
     fun provideNavigator(fragment: Fragment): Navigator = Navigator(fragment)
 
 }

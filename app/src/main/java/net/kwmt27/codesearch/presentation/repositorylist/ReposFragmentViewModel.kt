@@ -8,14 +8,21 @@ import net.kwmt27.codesearch.domain.interactor.BaseObserver
 import net.kwmt27.codesearch.domain.interactor.GetEvents
 import net.kwmt27.codesearch.domain.model.EventModel
 import net.kwmt27.codesearch.presentation.ViewModel
+import net.kwmt27.codesearch.presentation.eventlist.Navigator
 import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * リポジトリ一覧に対応するViewModel
  */
 @ActivityScope
 class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+
+    @Inject
+    @Named("ReposFragmentNavigator")
+    lateinit var navigator: Navigator
+
 
     init {
         Timber.d("ReposFragmentViewModel is created.")

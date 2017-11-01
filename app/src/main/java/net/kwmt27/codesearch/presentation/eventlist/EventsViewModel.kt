@@ -13,14 +13,20 @@ import net.kwmt27.codesearch.domain.model.EventModel
 import net.kwmt27.codesearch.presentation.ViewModel
 import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * イベント一覧に対応するViewModel
  */
 @ActivityScope
-class EventsViewModel @Inject constructor(private val getEvents: GetEvents, val navigator: Navigator) : BaseObservable(), ViewModel {
+class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
 
     private  val REQUET_CODE = 1
+
+    @Inject
+    @Named("EventsFragmentNavigator")
+    lateinit var navigator: Navigator
+
 
 //    @Inject
 //    lateinit var navigator:Navigator
