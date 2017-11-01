@@ -13,11 +13,12 @@ import javax.inject.Named
 @Module
 class ReposFragmentModule {
 
+    @Named("ReposFragment")
     @Provides
     fun provideFragment(fragmentManager: FragmentManager): Fragment = fragmentManager.findFragmentByTag(ReposFragment.TAG)
 
-    @Provides
     @Named("ReposFragmentNavigator")
+    @Provides
     fun provideNavigator(fragment: Fragment): Navigator = Navigator(fragment)
 
 }

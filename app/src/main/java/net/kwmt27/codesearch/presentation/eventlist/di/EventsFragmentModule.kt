@@ -12,6 +12,8 @@ import javax.inject.Named
 @FragmentScope
 @Module
 class EventsFragmentModule {
+
+    @Named("EventsFragment")
     @Provides
     fun provideFragment(fragmentManager: FragmentManager): Fragment = fragmentManager.findFragmentByTag(EventsFragment.TAG)
 
