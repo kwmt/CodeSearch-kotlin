@@ -6,7 +6,7 @@ import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.presentation.eventlist.di.EventsFragmentProvider
 import net.kwmt27.codesearch.presentation.main.MainActivity
 import net.kwmt27.codesearch.presentation.main.MainActivityModule
-import net.kwmt27.codesearch.presentation.repositorylist.ReposFragmentProvider
+import net.kwmt27.codesearch.presentation.repositorylist.di.ReposFragmentProvider
 
 /**
  * ActivityへのInject

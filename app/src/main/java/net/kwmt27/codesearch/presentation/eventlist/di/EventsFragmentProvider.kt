@@ -5,11 +5,10 @@ import dagger.android.ContributesAndroidInjector
 import net.kwmt27.codesearch.application.di.FragmentScope
 import net.kwmt27.codesearch.presentation.eventlist.EventsFragment
 
-@Module
+@Module(includes = arrayOf(EventsFragmentModule::class))
 abstract class EventsFragmentProvider {
     @FragmentScope
-    @ContributesAndroidInjector(modules = arrayOf(
-            EventsFragmentModule::class))
+    @ContributesAndroidInjector
     internal abstract fun contributeEventsFragment(): EventsFragment
 
 }

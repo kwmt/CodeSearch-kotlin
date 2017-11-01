@@ -1,22 +1,20 @@
 package net.kwmt27.codesearch.presentation.eventlist.di
 
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import dagger.Module
+import dagger.Provides
 import net.kwmt27.codesearch.application.di.FragmentScope
+import net.kwmt27.codesearch.presentation.eventlist.EventsFragment
+import net.kwmt27.codesearch.presentation.eventlist.Navigator
 
 @FragmentScope
 @Module
 class EventsFragmentModule {
+    @Provides
+    fun provideFragment(fragmentManager: FragmentManager): Fragment = fragmentManager.findFragmentByTag(EventsFragment.TAG)
 
-//    @FragmentScope
-//    @Provides
-//    fun provideFragmentManager(fragment: EventsFragment) : FragmentManager = fragment.fragmentManager
-//
-////    @Named("events")
-////    @Provides
-////    fun provideFragment(fragment: EventsFragment) : EventsFragment = fragment
-//
-////    @ActivityScope
-//    @FragmentScope
-//    @Provides
-//    fun provideNavigator(manager: FragmentManager): Navigator = Navigator(manager)
+    @Provides
+    fun provideNavigator(fragment: Fragment): Navigator = Navigator(fragment)
+
 }
