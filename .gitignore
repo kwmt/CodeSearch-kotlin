@@ -37,6 +37,7 @@ proguard/
 captures/
 
 # Intellij
+*.iml
 .idea/*
 !.idea/codeStyleSettings.xml
 !.idea/vcs.xml
