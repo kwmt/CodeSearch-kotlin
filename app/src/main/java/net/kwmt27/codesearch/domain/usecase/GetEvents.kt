@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.domain.interactor
+package net.kwmt27.codesearch.domain.usecase
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
