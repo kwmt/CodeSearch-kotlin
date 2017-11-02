@@ -31,10 +31,11 @@ class ReposFragment : DaggerFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        binding = FragmentReposBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
+        binding = FragmentReposBinding.inflate(inflater, container, false).also {
+            it.viewModel = viewModel
+        }
         return binding.root
     }
 

@@ -57,13 +57,11 @@ class EventsFragment : DaggerFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentEventsBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
-
+                              savedInstanceState: Bundle?): View {
+        binding = FragmentEventsBinding.inflate(inflater, container, false).also {
+            it.viewModel = viewModel
+        }
         initView()
-
         return binding.root
     }
 
