@@ -17,7 +17,7 @@ import dagger.android.support.DaggerFragment
 import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.databinding.FragmentEventsBinding
 import net.kwmt27.codesearch.databinding.ViewEventCellBinding
-import net.kwmt27.codesearch.domain.model.GithubRepoModel
+import net.kwmt27.codesearch.domain.model.GithubRepo
 import net.kwmt27.codesearch.presentation.adapter.BaseRecyclerAdapter
 import timber.log.Timber
 import javax.inject.Inject
@@ -39,9 +39,9 @@ class EventsFragment : DaggerFragment() {
          *
          * @param title
          * @param url
-         * @param githubRepoModel nullならレポジトリ検索できないので、検索メニューを非表示にする
+         * @param githubRepo nullならレポジトリ検索できないので、検索メニューを非表示にする
          */
-        fun onLinkClick(title: String, url: String, githubRepoModel: GithubRepoModel)
+        fun onLinkClick(title: String, url: String, githubRepo: GithubRepo)
     }
 
 

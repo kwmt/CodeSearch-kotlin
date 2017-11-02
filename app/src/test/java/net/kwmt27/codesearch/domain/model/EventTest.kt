@@ -4,13 +4,13 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class EventModelTest {
+class EventTest {
 
-    lateinit var event: EventModel
+    lateinit var event: Event
 
     @Before
     fun setUp() {
-        event = EventModel()
+        event = Event()
     }
 
     @Test

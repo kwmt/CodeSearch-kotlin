@@ -1,8 +1,6 @@
 package net.kwmt27.codesearch.domain.model
 
-import net.kwmt27.codesearch.domain.model.valueobject.GithubUser
-
-open class EventModel {
+open class Event {
 
     var itemType: ItemType = ItemType.Normal
     var isPublic: Boolean = false

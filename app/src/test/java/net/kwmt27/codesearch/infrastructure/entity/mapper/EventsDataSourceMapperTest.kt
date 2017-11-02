@@ -24,7 +24,7 @@ class EventsDataSourceMapperTest {
     }
 
     /**
-     * List<EventEntity>からList<EventModel>への変換テスト
+     * List<EventEntity>からList<Event>への変換テスト
      */
     @Test
     fun testTransformEventModel() {

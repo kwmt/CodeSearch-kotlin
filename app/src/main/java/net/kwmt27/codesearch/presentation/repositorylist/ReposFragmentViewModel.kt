@@ -6,7 +6,6 @@ import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.interactor.BaseObserver
 import net.kwmt27.codesearch.domain.interactor.GetEvents
-import net.kwmt27.codesearch.domain.model.EventModel
 import net.kwmt27.codesearch.presentation.ViewModel
 import timber.log.Timber
 import javax.inject.Inject

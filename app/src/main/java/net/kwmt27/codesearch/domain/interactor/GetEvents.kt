@@ -5,7 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import net.kwmt27.codesearch.domain.model.EventModel
+import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.repository.EventsRepository
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ class GetEvents @Inject constructor(private val eventRepository: EventsRepositor
 
     private val disposables = CompositeDisposable()
 
-    fun execute(observer: DisposableSingleObserver<List<EventModel>>, params: Params) {
+    fun execute(observer: DisposableSingleObserver<List<Event>>, params: Params) {
         val observable = this.eventRepository.events(params.user, params.page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

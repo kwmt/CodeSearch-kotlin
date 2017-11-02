@@ -9,7 +9,7 @@ import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.interactor.BaseObserver
 import net.kwmt27.codesearch.domain.interactor.GetEvents
-import net.kwmt27.codesearch.domain.model.EventModel
+import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.presentation.ViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -69,13 +69,13 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
         Timber.d("requestCode:" + requestCode + ", resultCode:" +  resultCode +", data:" + data)
     }
 
-    inner class EventsObserver : BaseObserver<List<EventModel>>() {
+    inner class EventsObserver : BaseObserver<List<Event>>() {
         override fun onError(e: Throwable) {
             Timber.d("onError:" + e)
             e.printStackTrace()
         }
 
-        override fun onSuccess(list: List<EventModel>) {
+        override fun onSuccess(list: List<Event>) {
             Timber.d("onSuccess" + list)
             // TODO: render
             val eventViewModels = list.map {
