@@ -18,7 +18,6 @@ class EventsFragmentModule {
     fun provideFragment(fragmentManager: FragmentManager): Fragment = fragmentManager.findFragmentByTag(EventsFragment.TAG)
 
     @Provides
-    @Named("EventsFragmentNavigator")
-    fun provideNavigator(@Named("EventsFragment") fragment: Fragment): EventsNavigator = EventsNavigator(fragment)
+    fun provideEventsNavigator(@Named("EventsFragment") fragment: Fragment): EventsNavigator = EventsNavigator(fragment)
 
 }

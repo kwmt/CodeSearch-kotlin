@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager
 import dagger.Module
 import dagger.Provides
 import net.kwmt27.codesearch.application.di.FragmentScope
-import net.kwmt27.codesearch.presentation.eventlist.EventsNavigator
 import net.kwmt27.codesearch.presentation.repositorylist.ReposFragment
+import net.kwmt27.codesearch.presentation.repositorylist.ReposNavigator
 import javax.inject.Named
 
 @FragmentScope
@@ -17,8 +17,7 @@ class ReposFragmentModule {
     @Provides
     fun provideFragment(fragmentManager: FragmentManager): Fragment = fragmentManager.findFragmentByTag(ReposFragment.TAG)
 
-    @Named("ReposFragmentNavigator")
     @Provides
-    fun provideNavigator(@Named("ReposFragment") fragment: Fragment): EventsNavigator = EventsNavigator(fragment)
+    fun provideReposNavigator(@Named("ReposFragment") fragment: Fragment): ReposNavigator = ReposNavigator(fragment)
 
 }
