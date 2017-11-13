@@ -2,8 +2,9 @@ package net.kwmt27.codesearch.application
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
-import net.kwmt27.codesearch.application.log.CrashLogTree
 import net.kwmt27.codesearch.application.di.components.DaggerAppComponent
+import net.kwmt27.codesearch.application.log.CrashLogTree
+import rx_activity_result2.RxActivityResult
 import timber.log.Timber
 
 
@@ -17,6 +18,7 @@ open class App : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(CrashLogTree())
+        RxActivityResult.register(this);
     }
 
 
