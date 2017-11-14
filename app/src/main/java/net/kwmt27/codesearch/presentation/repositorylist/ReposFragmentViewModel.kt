@@ -4,6 +4,7 @@ import android.databinding.BaseObservable
 import android.util.Log
 import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
+import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
 import net.kwmt27.codesearch.domain.usecase.GetEvents
 import net.kwmt27.codesearch.presentation.ViewModel
@@ -50,13 +51,13 @@ class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvent
     }
 
 
-    inner class EventsObserver : BaseObserver<List<EventModel>>() {
+    inner class EventsObserver : BaseObserver<List<Event>>() {
         override fun onError(e: Throwable) {
             Timber.d("onError:" + e)
             e.printStackTrace()
         }
 
-        override fun onSuccess(t: List<EventModel>) {
+        override fun onSuccess(t: List<Event>) {
             Timber.d("onSuccess" + t)
             // TODO: render
         }
