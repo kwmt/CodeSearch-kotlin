@@ -20,15 +20,9 @@ import javax.inject.Named
 @ActivityScope
 class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
 
-    private  val REQUET_CODE = 1
-
     @Inject
     @Named("EventsFragmentNavigator")
     lateinit var eventsNavigator: EventsNavigator
-
-
-//    @Inject
-//    lateinit var eventsNavigator:ReposNavigator
 
     val eventViewModels:ObservableList<EventViewModel>
 
@@ -37,9 +31,6 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
         eventViewModels = ObservableArrayList<EventViewModel>()
 
     }
-
-
-
 
 
     fun initialize(user:String, page:Int) {
