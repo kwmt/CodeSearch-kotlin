@@ -7,9 +7,9 @@ import android.databinding.ObservableList
 import android.util.Log
 import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
+import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
 import net.kwmt27.codesearch.domain.usecase.GetEvents
-import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.presentation.ViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -61,7 +61,7 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
         Log.d("EventsViewModel", "onclick")
         //loadEvents("kwmt", 1)
 //        eventsNavigator.startActivityEventsFragmentToMain2Activity()
-        eventsNavigator.startMain2Activity(REQUET_CODE)
+        eventsNavigator.startActivityForResultSample()
     }
 
 
