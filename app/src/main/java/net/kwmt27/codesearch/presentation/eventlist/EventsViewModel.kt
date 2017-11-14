@@ -4,7 +4,6 @@ import android.content.Intent
 import android.databinding.BaseObservable
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableList
-import android.util.Log
 import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.model.Event
@@ -58,9 +57,6 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
     }
 
     fun onClickButton(view: View) {
-        Log.d("EventsViewModel", "onclick")
-        //loadEvents("kwmt", 1)
-//        eventsNavigator.startActivityEventsFragmentToMain2Activity()
         eventsNavigator.startActivityForResultSample()
     }
 
