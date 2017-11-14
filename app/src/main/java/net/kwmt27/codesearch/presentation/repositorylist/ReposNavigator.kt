@@ -2,7 +2,7 @@ package net.kwmt27.codesearch.presentation.repositorylist
 
 import android.content.Intent
 import android.support.v4.app.Fragment
-import net.kwmt27.codesearch.presentation.Main2Activity
+import net.kwmt27.codesearch.presentation.login.LoginActivity
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -19,7 +19,7 @@ class ReposNavigator @Inject constructor(@Named("ReposFragment") val fragment: F
 
      fun startMain2Activity(requestCode:Int) {
         //val fragment = manager.findFragmentByTag(tag)
-        fragment.startActivityForResult(Intent(fragment.context, Main2Activity::class.java), requestCode)
+        fragment.startActivityForResult(Intent(fragment.context, LoginActivity::class.java), requestCode)
     }
 
 }

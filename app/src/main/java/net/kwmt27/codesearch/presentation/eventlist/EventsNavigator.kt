@@ -5,7 +5,7 @@ import android.content.Intent
 import android.support.v4.app.Fragment
 import io.reactivex.Single
 import io.reactivex.subjects.SingleSubject
-import net.kwmt27.codesearch.presentation.Main2Activity
+import net.kwmt27.codesearch.presentation.login.LoginActivity
 import rx_activity_result2.RxActivityResult
 import javax.inject.Inject
 import javax.inject.Named
@@ -19,7 +19,7 @@ class EventsNavigator @Inject constructor(@Named("EventsFragment") val fragment:
     fun startActivityForResultSample(): Single<String> {
         val single = SingleSubject.create<String>()
 
-        val observable = RxActivityResult.on(fragment).startIntent(Intent(fragment.context, Main2Activity::class.java))
+        val observable = RxActivityResult.on(fragment).startIntent(Intent(fragment.context, LoginActivity::class.java))
 
         return observable.flatMap{ result ->
             if(result.resultCode() != RESULT_OK) {
