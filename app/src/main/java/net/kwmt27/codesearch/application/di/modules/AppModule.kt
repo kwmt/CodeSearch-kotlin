@@ -10,9 +10,11 @@ import dagger.Provides
 import net.kwmt27.codesearch.BuildConfig
 import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.domain.repository.EventsRepository
+import net.kwmt27.codesearch.domain.repository.LoginRepository
 import net.kwmt27.codesearch.infrastructure.api.GithubApi
-import net.kwmt27.codesearch.infrastructure.repository.EventsDataRepository
 import net.kwmt27.codesearch.infrastructure.extension.printCurlString
+import net.kwmt27.codesearch.infrastructure.repository.EventsDataRepository
+import net.kwmt27.codesearch.infrastructure.repository.LoginRepositoryImpl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -36,6 +38,12 @@ class AppModule() {
     @Singleton
     @Provides
     fun provideEventsRepository(eventsDataRepository: EventsDataRepository): EventsRepository = eventsDataRepository
+
+    @Singleton
+    @Provides
+    fun provideLoginRepository(githubApi: GithubApi): LoginRepository {
+        return LoginRepositoryImpl(githubApi)
+    }
 
 
     @Singleton
