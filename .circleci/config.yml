@@ -24,6 +24,7 @@ jobs:
             echo ${CI_PULL_REQUESTS}
             echo ${CI_PULL_REQUEST}
             echo ${CIRCLE_TEST_REPORTS}
+            git config --global url."ssh://git@github.com".insteadOf "https://github.com" || true
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
