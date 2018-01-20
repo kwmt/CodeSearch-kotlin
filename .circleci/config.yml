@@ -14,6 +14,16 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
       - run:
+          name: ENV
+          command: |
+            echo ${CIRCLE_BRANCH}
+            echo ${CIRCLE_REPOSITORY_URL}
+            echo ${CIRCLE_SHA1}
+            echo ${CIRCLE_BUILD_NUM}
+            echo ${CI_PULL_REQUESTS}
+            echo ${CI_PULL_REQUEST}
+            echo ${CIRCLE_TEST_REPORTS}
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - run:
