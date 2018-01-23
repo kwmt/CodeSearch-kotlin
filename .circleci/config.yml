@@ -78,6 +78,7 @@ jobs:
           name: Upload to DeployGate
           command: |
               ./gradlew uploadDeployGate${APP_BUILD_TYPE^} -PdisablePreDex
+              echo "a"
 
 workflows:
   version: 2
