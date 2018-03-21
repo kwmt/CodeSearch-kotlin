@@ -5,7 +5,6 @@ import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.application.log.DeploygateLogTree
 import timber.log.Timber
 
-
 class DebugApp : App() {
 
     override fun onCreate() {
@@ -13,6 +12,4 @@ class DebugApp : App() {
         DeployGate.install(this)
         Timber.plant(DeploygateLogTree())
     }
-
-
 }

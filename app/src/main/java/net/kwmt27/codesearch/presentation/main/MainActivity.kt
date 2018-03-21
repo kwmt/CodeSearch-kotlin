@@ -24,11 +24,11 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home          -> {
+            R.id.navigation_home -> {
                 switchFragment(eventsFragment, EventsFragment.TAG)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard     -> {
+            R.id.navigation_dashboard -> {
                 switchFragment(reposFragment, ReposFragment.TAG)
                 return@OnNavigationItemSelectedListener true
             }
@@ -43,7 +43,6 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.viewModel = viewModel
-
 
         initializeFragments(savedInstanceState)
 

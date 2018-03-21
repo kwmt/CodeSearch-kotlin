@@ -8,9 +8,8 @@ import java.io.IOException
 
 /**
  * [Request] からcurl形式でログ出力する。
- * @param request [Request]
  */
-inline fun Request.printCurlString() {
+fun Request.printCurlString() {
     val bodyString = body()?.toStringFromRequestBody() ?: ""
     val contentType = body()?.contentType()?.toString() ?: ""
 
@@ -25,7 +24,7 @@ inline fun Request.printCurlString() {
     Timber.d("curl  -X ${method()} \\\n -d '$bodyString' \\\n -H '$contentType'$result \\\n '${url()}'\n")
 }
 
-inline fun RequestBody.toStringFromRequestBody(): String {
+fun RequestBody.toStringFromRequestBody(): String {
     try {
         val buffer = Buffer()
         writeTo(buffer)
@@ -34,4 +33,3 @@ inline fun RequestBody.toStringFromRequestBody(): String {
         return ""
     }
 }
-

@@ -16,7 +16,7 @@ object DataBindingHelper {
     private fun setImageUrl(imageView: ImageView, imageUrl: String, placeholderResId: Int) {
         if (TextUtils.isEmpty(imageUrl)) {
             imageView.setImageDrawable(
-                    ContextCompat.getDrawable(imageView.context, placeholderResId));
+                    ContextCompat.getDrawable(imageView.context, placeholderResId))
         } else {
             GlideApp
                     .with(imageView.context)
