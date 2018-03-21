@@ -9,12 +9,12 @@ import javax.inject.Named
 /**
  * ActivityのSubComponentとしてFactory
  */
-class ReposNavigator @Inject constructor(@Named("ReposFragment") val fragment: Fragment) {
+class RepositoryListNavigator @Inject constructor(@Named("RepositoryListFragment") val fragment: Fragment) {
 //    @Inject @Named("events")
-//    lateinit var fragment:EventsFragment
+//    lateinit var fragment:EventListFragment
 
     fun startActivityEventsFragmentToMain2Activity() {
-//        startActivityForResultSample(EventsFragment.TAG)
+//        startActivityForResultSample(EventListFragment.TAG)
     }
 
     fun startMain2Activity(requestCode: Int) {

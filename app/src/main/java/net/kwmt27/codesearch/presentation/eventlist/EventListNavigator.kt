@@ -13,7 +13,7 @@ import javax.inject.Named
 /**
  * ActivityのSubComponentとしてFactory
  */
-class EventsNavigator @Inject constructor(@Named("EventsFragment") val fragment: Fragment) {
+class EventListNavigator @Inject constructor(@Named("EventListFragment") val fragment: Fragment) {
 
     fun startActivityForResultSample(): Single<String> {
         val single = SingleSubject.create<String>()

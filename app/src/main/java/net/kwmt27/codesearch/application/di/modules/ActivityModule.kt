@@ -6,7 +6,7 @@ import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.presentation.eventlist.di.EventsFragmentProvider
 import net.kwmt27.codesearch.presentation.main.MainActivity
 import net.kwmt27.codesearch.presentation.main.MainActivityModule
-import net.kwmt27.codesearch.presentation.repositorylist.di.ReposFragmentProvider
+import net.kwmt27.codesearch.presentation.repositorylist.di.RepositoryListFragmentProvider
 
 /**
  * ActivityへのInject
@@ -24,7 +24,7 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = arrayOf(
             EventsFragmentProvider::class,
-            ReposFragmentProvider::class,
+            RepositoryListFragmentProvider::class,
             MainActivityModule::class
     ))
     internal abstract fun contributeMainActivity(): MainActivity

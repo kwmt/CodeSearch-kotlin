@@ -1,12 +1,11 @@
 package net.kwmt27.codesearch.presentation.repositorylist
 
 import android.databinding.BaseObservable
-import android.util.Log
 import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
-import net.kwmt27.codesearch.domain.usecase.GetEvents
+import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
 import net.kwmt27.codesearch.presentation.ViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -16,14 +15,14 @@ import javax.inject.Named
  * リポジトリ一覧に対応するViewModel
  */
 @ActivityScope
-class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvents) :
+class RepositoryListViewModel @Inject constructor(private val fetchEventListUseCase: FetchEventListUseCase) :
         BaseObservable(), ViewModel {
     @Inject
     @Named("ReposFragmentNavigator")
-    lateinit var repossNavigator: ReposNavigator
+    lateinit var repossNavigator: RepositoryListNavigator
 
     init {
-        Timber.d("ReposFragmentViewModel is created.")
+        Timber.d("RepositoryListViewModel is created.")
     }
 
     fun initialize(user: String, page: Int) {
@@ -31,16 +30,16 @@ class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvent
     }
 
     override fun destroy() {
-        this.getEvents.dispose()
+        this.fetchEventListUseCase.dispose()
     }
 
     private fun loadEvents(user: String, page: Int) {
         // TODO: Companionを書くしかないのかな...
-        this.getEvents.execute(EventsObserver(), GetEvents.Companion.Params(user, page))
+        this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
     }
 
     fun onClickButton(view: View) {
-        Log.d("ReposFragmentViewModel", "onclick")
+        Timber.d( "onclick")
         repossNavigator.startMain2Activity(1)
     }
 

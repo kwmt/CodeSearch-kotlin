@@ -8,7 +8,7 @@ import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
-import net.kwmt27.codesearch.domain.usecase.GetEvents
+import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
 import net.kwmt27.codesearch.presentation.ViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -18,18 +18,19 @@ import javax.inject.Named
  * イベント一覧に対応するViewModel
  */
 @ActivityScope
-class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(),
-        ViewModel {
+class EventListViewModel @Inject constructor(
+    private val fetchEventListUseCase: FetchEventListUseCase
+) : BaseObservable(), ViewModel {
 
     @Inject
     @Named("EventsFragmentNavigator")
-    lateinit var eventsNavigator: EventsNavigator
+    lateinit var eventListNavigator: EventListNavigator
 
-    val eventViewModels: ObservableList<EventViewModel>
+    val eventViewModelList: ObservableList<EventViewModel>
 
     init {
-        Timber.d("EventsViewModel is created.")
-        eventViewModels = ObservableArrayList<EventViewModel>()
+        Timber.d("EventListViewModel is created.")
+        eventViewModelList = ObservableArrayList<EventViewModel>()
     }
 
     fun initialize(user: String, page: Int) {
@@ -37,16 +38,16 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
     }
 
     override fun destroy() {
-        this.getEvents.dispose()
+        this.fetchEventListUseCase.dispose()
     }
 
     private fun loadEvents(user: String, page: Int) {
         // TODO: Companionを書くしかないのかな...
-        this.getEvents.execute(EventsObserver(), GetEvents.Companion.Params(user, page))
+        this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
     }
 
     fun onClickButton(view: View) {
-        eventsNavigator.startActivityForResultSample()
+        eventListNavigator.startActivityForResultSample()
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -60,7 +61,7 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
         }
 
         override fun onSuccess(list: List<Event>) {
-            Timber.d("onSuccess" + list)
+            Timber.d("onSuccess:$list")
             // TODO: render
             val eventViewModels = list.map {
                 EventViewModel(it.githubUser).apply { }
@@ -70,7 +71,7 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
     }
 
     private fun render(list: List<EventViewModel>) {
-        eventViewModels.clear()
-        eventViewModels.addAll(list)
+        eventViewModelList.clear()
+        eventViewModelList.addAll(list)
     }
 }

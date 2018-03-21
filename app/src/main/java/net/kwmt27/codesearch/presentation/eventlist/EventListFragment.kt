@@ -24,11 +24,11 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class EventsFragment : DaggerFragment() {
+class EventListFragment : DaggerFragment() {
 
     companion object Factory {
-        val TAG = EventsFragment::class.simpleName!!
-        fun newInstance(): EventsFragment = EventsFragment()
+        val TAG = EventListFragment::class.simpleName!!
+        fun newInstance(): EventListFragment = EventListFragment()
     }
 
     interface OnLinkClickListener {
@@ -42,7 +42,7 @@ class EventsFragment : DaggerFragment() {
     }
 
     @Inject
-    lateinit var viewModel: EventsViewModel
+    lateinit var viewModel: EventListViewModel
 
     private lateinit var binding: FragmentEventsBinding
 
@@ -69,9 +69,14 @@ class EventsFragment : DaggerFragment() {
         viewModel.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onDestroy() {
+        viewModel.destroy()
+        super.onDestroy()
+    }
+
     private fun initView() {
         binding.recyclerView.apply {
-            this.adapter = Adapter(context, viewModel.eventViewModels)
+            this.adapter = Adapter(context, viewModel.eventViewModelList)
             this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
     }

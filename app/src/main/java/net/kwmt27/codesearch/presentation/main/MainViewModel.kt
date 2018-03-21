@@ -30,6 +30,6 @@ class MainViewModel @Inject constructor() : BaseObservable() {
 
     fun onClickButton(view: View) {
         Log.d("MainViewModel", "onclick")
-        //eventsNavigator.startActivityForResultSample()
+        //eventListNavigator.startActivityForResultSample()
     }
 }

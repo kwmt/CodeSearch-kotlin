@@ -31,7 +31,7 @@ class AppModule() {
 
 //    @ActivityScope
 //    @Provides
-//    fun provideNavigator(): ReposNavigator = ReposNavigator()
+//    fun provideNavigator(): RepositoryListNavigator = RepositoryListNavigator()
 
     @Singleton
     @Provides

@@ -11,15 +11,15 @@ import javax.inject.Inject
 /**
  * GitHubリポジトリ一覧
  */
-class ReposFragment : DaggerFragment() {
+class RepositoryListFragment : DaggerFragment() {
 
     companion object Factory {
-        val TAG = ReposFragment::class.simpleName!!
-        fun newInstance(): ReposFragment = ReposFragment()
+        val TAG = RepositoryListFragment::class.simpleName!!
+        fun newInstance(): RepositoryListFragment = RepositoryListFragment()
     }
 
     @Inject
-    lateinit var viewModel: ReposFragmentViewModel
+    lateinit var viewModel: RepositoryListViewModel
 
     private lateinit var binding: FragmentReposBinding
 
@@ -38,5 +38,10 @@ class ReposFragment : DaggerFragment() {
             it.viewModel = viewModel
         }
         return binding.root
+    }
+
+    override fun onDestroy() {
+        viewModel.destroy()
+        super.onDestroy()
     }
 }

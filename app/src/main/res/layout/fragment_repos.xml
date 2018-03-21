@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="net.kwmt27.codesearch.presentation.repositorylist.ReposFragmentViewModel"
+            type="net.kwmt27.codesearch.presentation.repositorylist.RepositoryListViewModel"
             />
     </data>
 
