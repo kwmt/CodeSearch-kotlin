@@ -165,5 +165,5 @@ dokka {
 
 // https://github.com/jlleitschuh/ktlint-gradle
 ktlint {
-    version = "0.14.0"
+    version = "0.20.0"
 }
