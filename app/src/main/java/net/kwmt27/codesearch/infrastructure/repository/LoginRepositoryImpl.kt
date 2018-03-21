@@ -6,7 +6,7 @@ import net.kwmt27.codesearch.infrastructure.api.GithubApi
 import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(
-        private val githubApi: GithubApi
+    private val githubApi: GithubApi
 ) : LoginRepository {
 
     override fun login(userId: String, password: String): Single<String> {

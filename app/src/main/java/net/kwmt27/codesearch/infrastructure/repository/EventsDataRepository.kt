@@ -11,8 +11,8 @@ import javax.inject.Singleton
 @Singleton
 class EventsDataRepository
 @Inject constructor(
-        private val eventsDataSourceManager: EventsDataSourceManager,
-        private val eventEntityModelMapper: EventEntityModelMapper
+    private val eventsDataSourceManager: EventsDataSourceManager,
+    private val eventEntityModelMapper: EventEntityModelMapper
 ) : EventsRepository {
 
     override fun events(user: String, page: Int): Single<List<Event>> {

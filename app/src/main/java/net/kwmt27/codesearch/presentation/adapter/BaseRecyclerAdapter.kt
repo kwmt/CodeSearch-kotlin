@@ -4,7 +4,8 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 
 abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder>(
-        val context: Context, val list: List<T>
+    val context: Context,
+    val list: List<T>
 ) : RecyclerView.Adapter<VH>() {
 
 //    private var list: MutableList<U> = ArrayList()

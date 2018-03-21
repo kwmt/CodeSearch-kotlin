@@ -52,8 +52,9 @@ class EventsFragment : DaggerFragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentEventsBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
@@ -101,8 +102,10 @@ class EventsFragment : DaggerFragment() {
                 }
 
                 override fun onItemRangeMoved(
-                        contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int,
-                        i2: Int
+                    contributorViewModels: ObservableList<EventViewModel>,
+                    i: Int,
+                    i1: Int,
+                    i2: Int
                 ) {
                     notifyItemMoved(i, i1)
                 }

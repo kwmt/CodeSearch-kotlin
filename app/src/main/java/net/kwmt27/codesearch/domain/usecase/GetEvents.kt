@@ -9,7 +9,7 @@ import javax.inject.Inject
  * イベントリストを取得するUseCase
  */
 class GetEvents @Inject constructor(
-        private val eventRepository: EventsRepository
+    private val eventRepository: EventsRepository
 ) : UseCase<GetEvents.Companion.Params, List<Event>>() {
 
     companion object {

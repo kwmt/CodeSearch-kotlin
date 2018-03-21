@@ -15,9 +15,9 @@ interface GithubApi {
 
     @POST("/authorizations")
     fun authorizations(
-            @Field("scopes") scopes: List<String>,
-            @Field("note") note: String,
-            @Field("note_ur") noteUr: String
+        @Field("scopes") scopes: List<String>,
+        @Field("note") note: String,
+        @Field("note_ur") noteUr: String
 
     ): Single<String>
 }
