@@ -10,7 +10,6 @@ abstract class EventsFragmentProvider {
     @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun contributeEventsFragment(): EventsFragment
-
 }
 //@Module(subcomponents = arrayOf(EventsFragmentProvider.EventsFragmentSubComponent::class))
 //abstract class EventsFragmentProvider {

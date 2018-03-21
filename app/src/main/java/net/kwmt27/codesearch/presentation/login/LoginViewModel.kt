@@ -7,10 +7,7 @@ import javax.inject.Inject
 /**
  * LoginViewModel
  */
-class LoginViewModel @Inject constructor(): BaseObservable(), ViewModel {
+class LoginViewModel @Inject constructor() : BaseObservable(), ViewModel {
     override fun destroy() {
-
     }
-
-    
 }

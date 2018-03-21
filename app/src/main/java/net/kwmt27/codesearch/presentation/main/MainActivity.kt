@@ -12,7 +12,6 @@ import net.kwmt27.codesearch.presentation.eventlist.EventsFragment
 import net.kwmt27.codesearch.presentation.repositorylist.ReposFragment
 import javax.inject.Inject
 
-
 class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
@@ -23,14 +22,13 @@ class MainActivity : DaggerAppCompatActivity() {
     private var eventsFragment: EventsFragment? = null
     private var reposFragment: ReposFragment? = null
 
-
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
+            R.id.navigation_home          -> {
                 switchFragment(eventsFragment, EventsFragment.TAG)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
+            R.id.navigation_dashboard     -> {
                 switchFragment(reposFragment, ReposFragment.TAG)
                 return@OnNavigationItemSelectedListener true
             }
@@ -51,7 +49,6 @@ class MainActivity : DaggerAppCompatActivity() {
 
         binding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
-
 
     private fun initializeFragments(savedInstanceState: Bundle?) {
         val manager = supportFragmentManager
@@ -79,5 +76,4 @@ class MainActivity : DaggerAppCompatActivity() {
         manager.executePendingTransactions()
         return true
     }
-
 }

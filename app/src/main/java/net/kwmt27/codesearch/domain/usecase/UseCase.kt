@@ -29,6 +29,4 @@ abstract class UseCase<REQUEST, RESPONSE> {
             disposables.dispose()
         }
     }
-
-
 }

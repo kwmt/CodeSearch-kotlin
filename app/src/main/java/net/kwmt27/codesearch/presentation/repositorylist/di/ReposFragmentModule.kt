@@ -19,5 +19,4 @@ class ReposFragmentModule {
 
     @Provides
     fun provideReposNavigator(@Named("ReposFragment") fragment: Fragment): ReposNavigator = ReposNavigator(fragment)
-
 }

@@ -18,29 +18,27 @@ import javax.inject.Named
  * イベント一覧に対応するViewModel
  */
 @ActivityScope
-class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
+class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(),
+        ViewModel {
 
     @Inject
     @Named("EventsFragmentNavigator")
     lateinit var eventsNavigator: EventsNavigator
 
-    val eventViewModels:ObservableList<EventViewModel>
+    val eventViewModels: ObservableList<EventViewModel>
 
     init {
         Timber.d("EventsViewModel is created.")
         eventViewModels = ObservableArrayList<EventViewModel>()
-
     }
 
-
-    fun initialize(user:String, page:Int) {
+    fun initialize(user: String, page: Int) {
         loadEvents(user, page)
     }
 
     override fun destroy() {
         this.getEvents.dispose()
     }
-
 
     private fun loadEvents(user: String, page: Int) {
         // TODO: Companionを書くしかないのかな...
@@ -51,9 +49,8 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
         eventsNavigator.startActivityForResultSample()
     }
 
-
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Timber.d("requestCode:" + requestCode + ", resultCode:" +  resultCode +", data:" + data)
+        Timber.d("requestCode:" + requestCode + ", resultCode:" + resultCode + ", data:" + data)
     }
 
     inner class EventsObserver : BaseObserver<List<Event>>() {
@@ -66,17 +63,14 @@ class EventsViewModel @Inject constructor(private val getEvents: GetEvents) : Ba
             Timber.d("onSuccess" + list)
             // TODO: render
             val eventViewModels = list.map {
-                EventViewModel(it.githubUser).apply {  }
+                EventViewModel(it.githubUser).apply { }
             }
             render(eventViewModels)
         }
-
     }
 
-    private fun render(list:List<EventViewModel>) {
+    private fun render(list: List<EventViewModel>) {
         eventViewModels.clear()
         eventViewModels.addAll(list)
     }
-
-
 }

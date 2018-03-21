@@ -7,10 +7,10 @@ import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(
         private val githubApi: GithubApi
-): LoginRepository {
+) : LoginRepository {
 
     override fun login(userId: String, password: String): Single<String> {
         // TODO
-        return githubApi.authorizations(listOf("scope"),"note", "noteUr" )
+        return githubApi.authorizations(listOf("scope"), "note", "noteUr")
     }
 }

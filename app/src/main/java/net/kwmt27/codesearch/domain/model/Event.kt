@@ -6,6 +6,4 @@ open class Event {
     var isPublic: Boolean = false
 
     var githubUser: GithubUser = GithubUser("", "")
-
-
 }

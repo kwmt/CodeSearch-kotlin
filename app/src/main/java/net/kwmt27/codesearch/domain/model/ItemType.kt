@@ -8,8 +8,8 @@ enum class ItemType(val typeId: Int) {
     companion object {
         fun valueOf(typeId: Int): ItemType {
             val filtered = ItemType.values().filter { it.typeId == typeId }.firstOrNull()
-            return filtered ?: throw IllegalArgumentException("no such enum object for the id: " + typeId)
+            return filtered
+                    ?: throw IllegalArgumentException("no such enum object for the id: " + typeId)
         }
     }
-
 }

@@ -11,5 +11,5 @@ interface EventsRepository {
      * @param user 誰のイベントリストを取得するかを指定する
      * @param page 何ページ目のイベントリストを取得するかを指定する
      */
-    fun events(user:String, page:Int) : Single<List<Event>>
+    fun events(user: String, page: Int): Single<List<Event>>
 }

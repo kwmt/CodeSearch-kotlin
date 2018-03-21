@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.widget.ImageView
 import net.kwmt27.codesearch.R
 
-
 object DataBindingHelper {
     @JvmStatic
     @BindingAdapter("imageUrl")
@@ -27,6 +26,4 @@ object DataBindingHelper {
                     .into(imageView)
         }
     }
-
-
 }

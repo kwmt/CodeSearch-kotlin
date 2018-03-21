@@ -11,6 +11,4 @@ abstract class ReposFragmentProvider {
     @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun contributeReposFragment(): ReposFragment
-
-
 }

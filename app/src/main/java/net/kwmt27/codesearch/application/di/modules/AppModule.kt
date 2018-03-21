@@ -1,6 +1,5 @@
 package net.kwmt27.codesearch.application.di.modules
 
-
 import android.content.Context
 import android.support.annotation.NonNull
 import com.squareup.moshi.KotlinJsonAdapterFactory
@@ -27,9 +26,8 @@ import javax.inject.Singleton
 @Module
 class AppModule() {
 
-
     @Provides
-    fun provideContext(app: App):Context = app
+    fun provideContext(app: App): Context = app
 
 //    @ActivityScope
 //    @Provides
@@ -44,7 +42,6 @@ class AppModule() {
     fun provideLoginRepository(githubApi: GithubApi): LoginRepository {
         return LoginRepositoryImpl(githubApi)
     }
-
 
     @Singleton
     @Provides
@@ -64,13 +61,10 @@ class AppModule() {
             .add(KotlinJsonAdapterFactory())
             .build()
 
-
     @Singleton
     @Provides
     fun provideHttpClient(): OkHttpClient =
             OkHttpClient.Builder().addInterceptor(CurlHttpLoggingInterceptor()).build()
-
-
 
     private class CurlHttpLoggingInterceptor : Interceptor {
 
@@ -78,5 +72,4 @@ class AppModule() {
         override fun intercept(@NonNull chain: Interceptor.Chain): Response =
                 chain.proceed(chain.request().apply { printCurlString() })
     }
-
 }

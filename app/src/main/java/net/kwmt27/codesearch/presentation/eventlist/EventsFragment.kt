@@ -1,6 +1,5 @@
 package net.kwmt27.codesearch.presentation.eventlist
 
-
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -22,12 +21,10 @@ import net.kwmt27.codesearch.presentation.adapter.BaseRecyclerAdapter
 import timber.log.Timber
 import javax.inject.Inject
 
-
 /**
  * A simple [Fragment] subclass.
  */
 class EventsFragment : DaggerFragment() {
-
 
     companion object Factory {
         val TAG = EventsFragment::class.simpleName!!
@@ -44,7 +41,6 @@ class EventsFragment : DaggerFragment() {
         fun onLinkClick(title: String, url: String, githubRepo: GithubRepo)
     }
 
-
     @Inject
     lateinit var viewModel: EventsViewModel
 
@@ -53,11 +49,12 @@ class EventsFragment : DaggerFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.initialize("kwmt", 1)
-
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View {
         binding = FragmentEventsBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
         }
@@ -67,7 +64,7 @@ class EventsFragment : DaggerFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("requestCode:" + requestCode + ", resultCode:" +  resultCode +", data:" + data)
+        Timber.d("requestCode:" + requestCode + ", resultCode:" + resultCode + ", data:" + data)
         viewModel.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -76,22 +73,21 @@ class EventsFragment : DaggerFragment() {
             this.adapter = Adapter(context, viewModel.eventViewModels)
             this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
-
-
     }
 
-    class BindingHolder<out T : ViewDataBinding>(val context: Context, val parent: ViewGroup, layoutResId: Int) : RecyclerView.ViewHolder(
-            LayoutInflater.from(context).inflate(layoutResId, parent, false)
-    ) {
+    class BindingHolder<out T : ViewDataBinding>(val context: Context, val parent: ViewGroup, layoutResId: Int) :
+            RecyclerView.ViewHolder(
+                    LayoutInflater.from(context).inflate(layoutResId, parent, false)
+            ) {
         val binding: T = DataBindingUtil.bind(itemView)
     }
-
 
     inner class Adapter(val ctx: Context, list: ObservableList<EventViewModel>) :
             BaseRecyclerAdapter<EventViewModel, BindingHolder<ViewEventCellBinding>>(ctx, list) {
 
         init {
-            list.addOnListChangedCallback(object : ObservableList.OnListChangedCallback<ObservableList<EventViewModel>>() {
+            list.addOnListChangedCallback(object :
+                    ObservableList.OnListChangedCallback<ObservableList<EventViewModel>>() {
                 override fun onChanged(contributorViewModels: ObservableList<EventViewModel>) {
                     notifyDataSetChanged()
                 }
@@ -104,8 +100,10 @@ class EventsFragment : DaggerFragment() {
                     notifyItemRangeInserted(i, i1)
                 }
 
-                override fun onItemRangeMoved(contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int,
-                                              i2: Int) {
+                override fun onItemRangeMoved(
+                        contributorViewModels: ObservableList<EventViewModel>, i: Int, i1: Int,
+                        i2: Int
+                ) {
                     notifyItemMoved(i, i1)
                 }
 
@@ -125,10 +123,7 @@ class EventsFragment : DaggerFragment() {
                 this.executePendingBindings()
             }
         }
-
-
     }
-
 
 //    inner class BindingHolder<T : ViewDataBinding>
 //    (@NonNull context: Context, @NonNull parent: ViewGroup,

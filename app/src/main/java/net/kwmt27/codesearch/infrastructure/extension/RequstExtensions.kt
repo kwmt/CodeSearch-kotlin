@@ -6,7 +6,6 @@ import okio.Buffer
 import timber.log.Timber
 import java.io.IOException
 
-
 /**
  * [Request] からcurl形式でログ出力する。
  * @param request [Request]
@@ -26,7 +25,6 @@ inline fun Request.printCurlString() {
     Timber.d("curl  -X ${method()} \\\n -d '$bodyString' \\\n -H '$contentType'$result \\\n '${url()}'\n")
 }
 
-
 inline fun RequestBody.toStringFromRequestBody(): String {
     try {
         val buffer = Buffer()
@@ -35,6 +33,5 @@ inline fun RequestBody.toStringFromRequestBody(): String {
     } catch (e: IOException) {
         return ""
     }
-
 }
 

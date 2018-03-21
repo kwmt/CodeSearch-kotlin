@@ -28,7 +28,6 @@ abstract class ActivityModule {
             MainActivityModule::class
     ))
     internal abstract fun contributeMainActivity(): MainActivity
-
 }
 
 /**

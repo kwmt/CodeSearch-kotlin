@@ -12,12 +12,12 @@ import javax.inject.Singleton
 @Singleton
 class EventEntityModelMapper @Inject constructor() {
 
-    fun transform(events: List<EventEntity>) : List<Event> {
-        return events.map { Event().apply {
-            isPublic = true
-            githubUser = GithubUser(it.actor.displayLogin, it.actor.avatarUrl)
-        } }
-
-
+    fun transform(events: List<EventEntity>): List<Event> {
+        return events.map {
+            Event().apply {
+                isPublic = true
+                githubUser = GithubUser(it.actor.displayLogin, it.actor.avatarUrl)
+            }
+        }
     }
 }

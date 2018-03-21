@@ -7,10 +7,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class EventsRemoteDataSource @Inject constructor(private val githubClient: GithubClient):EventsDataSource {
+class EventsRemoteDataSource @Inject constructor(private val githubClient: GithubClient) :
+        EventsDataSource {
     override fun eventEntities(user: String, page: Int): Single<List<EventEntity>> {
-        return githubClient.fetchEvent(user,page)
+        return githubClient.fetchEvent(user, page)
     }
-
-
 }

@@ -4,12 +4,9 @@ import android.support.v4.app.FragmentManager
 import dagger.Module
 import dagger.Provides
 
-
 @Module
 class MainActivityModule {
 
     @Provides
-    fun provideFragmentManager(mainActivity: MainActivity) : FragmentManager = mainActivity.supportFragmentManager
-
-
+    fun provideFragmentManager(mainActivity: MainActivity): FragmentManager = mainActivity.supportFragmentManager
 }

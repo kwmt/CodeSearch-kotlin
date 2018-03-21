@@ -15,20 +15,17 @@ import javax.inject.Named
  */
 class EventsNavigator @Inject constructor(@Named("EventsFragment") val fragment: Fragment) {
 
-
     fun startActivityForResultSample(): Single<String> {
         val single = SingleSubject.create<String>()
 
         val observable = RxActivityResult.on(fragment).startIntent(Intent(fragment.context, LoginActivity::class.java))
 
-        return observable.flatMap{ result ->
-            if(result.resultCode() != RESULT_OK) {
+        return observable.flatMap { result ->
+            if (result.resultCode() != RESULT_OK) {
                 single.onSuccess("Not ok")
             }
             single.onSuccess("success")
             return@flatMap single.toObservable()
         }.singleOrError()
-
     }
-
 }

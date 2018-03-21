@@ -19,5 +19,4 @@ class EventsFragmentModule {
 
     @Provides
     fun provideEventsNavigator(@Named("EventsFragment") fragment: Fragment): EventsNavigator = EventsNavigator(fragment)
-
 }

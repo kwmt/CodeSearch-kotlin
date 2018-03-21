@@ -17,9 +17,8 @@ class ReposNavigator @Inject constructor(@Named("ReposFragment") val fragment: F
 //        startActivityForResultSample(EventsFragment.TAG)
     }
 
-     fun startMain2Activity(requestCode:Int) {
+    fun startMain2Activity(requestCode: Int) {
         //val fragment = manager.findFragmentByTag(tag)
         fragment.startActivityForResult(Intent(fragment.context, LoginActivity::class.java), requestCode)
     }
-
 }

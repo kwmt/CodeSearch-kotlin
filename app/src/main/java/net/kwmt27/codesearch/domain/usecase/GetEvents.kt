@@ -12,17 +12,11 @@ class GetEvents @Inject constructor(
         private val eventRepository: EventsRepository
 ) : UseCase<GetEvents.Companion.Params, List<Event>>() {
 
-
     companion object {
-        data class Params(val user:String, val page:Int)
+        data class Params(val user: String, val page: Int)
     }
-
 
     override fun buildRepository(param: Params): Single<List<Event>> {
         return eventRepository.events(param.user, param.page)
     }
-
-
-
-
 }

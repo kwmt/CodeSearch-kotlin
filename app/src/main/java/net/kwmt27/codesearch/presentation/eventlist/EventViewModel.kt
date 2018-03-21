@@ -8,23 +8,20 @@ import net.kwmt27.codesearch.presentation.ViewModel
 /**
  * イベント一覧の各リストアイテムに対応するViewModel
  */
-class EventViewModel(githubUser: GithubUser):BaseObservable(), ViewModel {
+class EventViewModel(githubUser: GithubUser) : BaseObservable(), ViewModel {
 
-    val name:String
-    val imageUrl:String
+    val name: String
+    val imageUrl: String
 
     init {
         name = githubUser.name
         imageUrl = githubUser.imageUrl
     }
 
-
-
     override fun destroy() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     fun onClickEvent(view: View) {
-
     }
 }

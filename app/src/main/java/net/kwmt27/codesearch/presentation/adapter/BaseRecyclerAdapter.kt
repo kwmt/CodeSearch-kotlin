@@ -1,16 +1,13 @@
 package net.kwmt27.codesearch.presentation.adapter
 
-
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 
-
-abstract class BaseRecyclerAdapter<T,VH : RecyclerView.ViewHolder>(
-        val context:Context,  val list:List<T>) : RecyclerView.Adapter<VH>() {
+abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder>(
+        val context: Context, val list: List<T>
+) : RecyclerView.Adapter<VH>() {
 
 //    private var list: MutableList<U> = ArrayList()
-
-
 
 //    override fun getItemViewType(position: Int): Int {
 //        if (position == HEADER_POSITION) {
@@ -21,16 +18,14 @@ abstract class BaseRecyclerAdapter<T,VH : RecyclerView.ViewHolder>(
 //        } else ItemType.Normal.typeId
 //    }
 
-
     override fun getItemCount(): Int {
 //        return if (list.size > 0) list.size + HEADER_SIZE else 0
         return list.size
     }
 
-    fun getItem(position:Int):T {
+    fun getItem(position: Int): T {
         return list.get(position)
     }
-
 
 //    fun addProgressItemTypeThenNotify(entity: U) {
 //        entity.setItemType(ItemType.Progress)
@@ -64,5 +59,4 @@ abstract class BaseRecyclerAdapter<T,VH : RecyclerView.ViewHolder>(
         val HEADER_POSITION = 0
         val HEADER_SIZE = 1
     }
-
 }

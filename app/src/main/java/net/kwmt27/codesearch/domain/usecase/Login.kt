@@ -18,5 +18,4 @@ class Login @Inject constructor(
     override fun buildRepository(param: Params): Single<String> {
         return loginRepository.login(param.userId, param.password)
     }
-
 }

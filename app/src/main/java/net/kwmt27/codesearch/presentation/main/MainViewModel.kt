@@ -32,5 +32,4 @@ class MainViewModel @Inject constructor() : BaseObservable() {
         Log.d("MainViewModel", "onclick")
         //eventsNavigator.startActivityForResultSample()
     }
-
 }
