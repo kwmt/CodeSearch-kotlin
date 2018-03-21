@@ -34,6 +34,11 @@
         <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="true" />
         <AndroidXmlCodeStyleSettings>
           <option name="USE_CUSTOM_SETTINGS" value="true" />
+          <option name="LAYOUT_SETTINGS">
+            <value>
+              <option name="INSERT_LINE_BREAK_AFTER_LAST_ATTRIBUTE" value="true" />
+            </value>
+          </option>
         </AndroidXmlCodeStyleSettings>
         <JetCodeStyleSettings>
           <option name="PACKAGES_TO_USE_STAR_IMPORTS">
@@ -73,6 +78,7 @@
         </Objective-C-extensions>
         <XML>
           <option name="XML_KEEP_LINE_BREAKS" value="false" />
+          <option name="XML_KEEP_BLANK_LINES" value="1" />
           <option name="XML_ALIGN_ATTRIBUTES" value="false" />
           <option name="XML_SPACE_INSIDE_EMPTY_TAG" value="true" />
           <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />

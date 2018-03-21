@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
-import net.kwmt27.codesearch.databinding.FragmentReposBinding
+import net.kwmt27.codesearch.databinding.FragmentRepoListBinding
 import javax.inject.Inject
 
 /**
@@ -21,7 +21,7 @@ class RepositoryListFragment : DaggerFragment() {
     @Inject
     lateinit var viewModel: RepositoryListViewModel
 
-    private lateinit var binding: FragmentReposBinding
+    private lateinit var binding: FragmentRepoListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +33,7 @@ class RepositoryListFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentReposBinding.inflate(inflater, container, false).also {
+        binding = FragmentRepoListBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
         }
         return binding.root

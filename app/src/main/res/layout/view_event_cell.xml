@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <data>
@@ -29,36 +30,37 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher"
             app:imageUrl="@{viewModel.imageUrl}"
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/github_user_icon_image"
             />
 
         <RelativeLayout
             android:id="@+id/name_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@+id/avatar"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/avatar"
             >
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_toLeftOf="@+id/date"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/date"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="@{viewModel.name}"
+                tools:text="@tools:sample/lorem"
                 />
-
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:gravity="center_vertical"
                 android:text="15min"
                 android:textSize="10sp"
@@ -73,7 +75,6 @@
                 >
             </FrameLayout>
         </RelativeLayout>
-
 
     </RelativeLayout>
 

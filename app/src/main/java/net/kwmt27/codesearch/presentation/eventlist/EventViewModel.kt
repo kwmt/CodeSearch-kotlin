@@ -10,13 +10,8 @@ import net.kwmt27.codesearch.presentation.ViewModel
  */
 class EventViewModel(githubUser: GithubUser) : BaseObservable(), ViewModel {
 
-    val name: String
-    val imageUrl: String
-
-    init {
-        name = githubUser.name
-        imageUrl = githubUser.imageUrl
-    }
+    val name: String = githubUser.name
+    val imageUrl: String = githubUser.imageUrl
 
     override fun destroy() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

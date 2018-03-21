@@ -14,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class EventsDataRepositoryTest {
-    private lateinit var eventsDataRepository: EventsDataRepository
+    private lateinit var eventsDataRepository: EventListDataRepository
 
     @Mock private lateinit var mockEventsDataSourceManager: EventsDataSourceManager
     @Mock private lateinit var mockEventEntityModelMapper: EventEntityModelMapper
@@ -24,7 +24,7 @@ class EventsDataRepositoryTest {
 
     @Before
     fun setup() {
-        eventsDataRepository = EventsDataRepository(mockEventsDataSourceManager, mockEventEntityModelMapper)
+        eventsDataRepository = EventListDataRepository(mockEventsDataSourceManager, mockEventEntityModelMapper)
 
     }
 

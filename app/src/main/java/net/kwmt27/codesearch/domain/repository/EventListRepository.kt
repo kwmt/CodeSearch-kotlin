@@ -3,7 +3,7 @@ package net.kwmt27.codesearch.domain.repository
 import io.reactivex.Single
 import net.kwmt27.codesearch.domain.model.Event
 
-interface EventsRepository {
+interface EventListRepository {
     /**
      * イベントリストを取得する
      *

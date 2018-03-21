@@ -14,7 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
 import net.kwmt27.codesearch.R
-import net.kwmt27.codesearch.databinding.FragmentEventsBinding
+import net.kwmt27.codesearch.databinding.FragmentEventListBinding
 import net.kwmt27.codesearch.databinding.ViewEventCellBinding
 import net.kwmt27.codesearch.domain.model.GithubRepo
 import net.kwmt27.codesearch.presentation.adapter.BaseRecyclerAdapter
@@ -44,7 +44,7 @@ class EventListFragment : DaggerFragment() {
     @Inject
     lateinit var viewModel: EventListViewModel
 
-    private lateinit var binding: FragmentEventsBinding
+    private lateinit var binding: FragmentEventListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class EventListFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEventsBinding.inflate(inflater, container, false).also {
+        binding = FragmentEventListBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
         }
         initView()
@@ -65,7 +65,7 @@ class EventListFragment : DaggerFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("requestCode:" + requestCode + ", resultCode:" + resultCode + ", data:" + data)
+        Timber.d("requestCode:$requestCode, resultCode:$resultCode, data:$data")
         viewModel.onActivityResult(requestCode, resultCode, data)
     }
 

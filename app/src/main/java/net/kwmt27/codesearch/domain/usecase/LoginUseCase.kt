@@ -7,9 +7,9 @@ import javax.inject.Inject
 /**
  * ログインする
  */
-class Login @Inject constructor(
+class LoginUseCase @Inject constructor(
     private val loginRepository: LoginRepository
-) : UseCase<Login.Companion.Params, String>() {
+) : UseCase<LoginUseCase.Companion.Params, String>() {
 
     companion object {
         data class Params(val userId: String, val password: String)
