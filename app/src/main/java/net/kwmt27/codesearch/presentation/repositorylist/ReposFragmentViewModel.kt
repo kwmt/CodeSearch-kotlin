@@ -16,29 +16,23 @@ import javax.inject.Named
  * リポジトリ一覧に対応するViewModel
  */
 @ActivityScope
-class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvents) : BaseObservable(), ViewModel {
-
+class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvents) :
+        BaseObservable(), ViewModel {
     @Inject
     @Named("ReposFragmentNavigator")
     lateinit var repossNavigator: ReposNavigator
-
 
     init {
         Timber.d("ReposFragmentViewModel is created.")
     }
 
-
-
-
-
-    fun initialize(user:String, page:Int) {
+    fun initialize(user: String, page: Int) {
         loadEvents(user, page)
     }
 
     override fun destroy() {
         this.getEvents.dispose()
     }
-
 
     private fun loadEvents(user: String, page: Int) {
         // TODO: Companionを書くしかないのかな...
@@ -50,7 +44,6 @@ class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvent
         repossNavigator.startMain2Activity(1)
     }
 
-
     inner class EventsObserver : BaseObserver<List<Event>>() {
         override fun onError(e: Throwable) {
             Timber.d("onError:" + e)
@@ -61,8 +54,5 @@ class ReposFragmentViewModel @Inject constructor(private val getEvents: GetEvent
             Timber.d("onSuccess" + t)
             // TODO: render
         }
-
     }
-
-
 }
