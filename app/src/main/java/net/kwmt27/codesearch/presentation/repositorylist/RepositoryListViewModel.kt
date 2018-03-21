@@ -19,7 +19,7 @@ class RepositoryListViewModel @Inject constructor(private val fetchEventListUseC
         BaseObservable(), ViewModel {
     @Inject
     @Named("ReposFragmentNavigator")
-    lateinit var repossNavigator: RepositoryListNavigator
+    lateinit var repositoryListNavigator: RepositoryListNavigator
 
     init {
         Timber.d("RepositoryListViewModel is created.")
@@ -36,11 +36,6 @@ class RepositoryListViewModel @Inject constructor(private val fetchEventListUseC
     private fun loadEvents(user: String, page: Int) {
         // TODO: Companionを書くしかないのかな...
         this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
-    }
-
-    fun onClickButton(view: View) {
-        Timber.d( "onclick")
-        repossNavigator.startMain2Activity(1)
     }
 
     inner class EventsObserver : BaseObserver<List<Event>>() {
