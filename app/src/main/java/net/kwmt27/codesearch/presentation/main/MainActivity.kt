@@ -54,7 +54,6 @@ class MainActivity : DaggerAppCompatActivity() {
         eventsFragment = manager.findFragmentByTag(EventsFragment.TAG) as EventsFragment? ?: EventsFragment.newInstance()
         reposFragment = manager.findFragmentByTag(ReposFragment.TAG) as ReposFragment? ?: ReposFragment.newInstance()
 
-
         if (savedInstanceState == null) {
             switchFragment(eventsFragment, EventsFragment.TAG)
         }
