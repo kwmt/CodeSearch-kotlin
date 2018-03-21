@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Build
           command: |
-              ./gradlew --offline --stacktrace assemble${APP_BUILD_TYPE^}
+              ./gradlew --stacktrace assemble${APP_BUILD_TYPE^}
       - run:
           name: Check
           command: |
