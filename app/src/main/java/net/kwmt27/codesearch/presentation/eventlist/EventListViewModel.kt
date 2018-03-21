@@ -1,10 +1,8 @@
 package net.kwmt27.codesearch.presentation.eventlist
 
-import android.content.Intent
 import android.databinding.BaseObservable
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableList
-import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
@@ -46,13 +44,6 @@ class EventListViewModel @Inject constructor(
         this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
     }
 
-    fun onClickButton(view: View) {
-        eventListNavigator.startActivityForResultSample()
-    }
-
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Timber.d("requestCode:" + requestCode + ", resultCode:" + resultCode + ", data:" + data)
-    }
 
     inner class EventsObserver : BaseObserver<List<Event>>() {
         override fun onError(e: Throwable) {
@@ -64,7 +55,7 @@ class EventListViewModel @Inject constructor(
             Timber.d("onSuccess:$list")
             // TODO: render
             val eventViewModels = list.map {
-                EventViewModel(it.githubUser).apply { }
+                EventViewModel(it.githubUser, eventListNavigator).apply { }
             }
             render(eventViewModels)
         }

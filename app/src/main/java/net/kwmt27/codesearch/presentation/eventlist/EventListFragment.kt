@@ -63,12 +63,6 @@ class EventListFragment : DaggerFragment() {
         return binding.root
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        Timber.d("requestCode:$requestCode, resultCode:$resultCode, data:$data")
-        viewModel.onActivityResult(requestCode, resultCode, data)
-    }
-
     override fun onDestroy() {
         viewModel.destroy()
         super.onDestroy()

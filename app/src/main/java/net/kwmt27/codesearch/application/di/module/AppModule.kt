@@ -6,6 +6,7 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
+import io.reactivex.disposables.CompositeDisposable
 import net.kwmt27.codesearch.BuildConfig
 import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.domain.repository.EventListRepository
@@ -24,10 +25,13 @@ import java.io.IOException
 import javax.inject.Singleton
 
 @Module
-class AppModule() {
+class AppModule {
 
     @Provides
     fun provideContext(app: App): Context = app
+
+    @Provides
+    fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
 
 //    @ActivityScope
 //    @Provides
