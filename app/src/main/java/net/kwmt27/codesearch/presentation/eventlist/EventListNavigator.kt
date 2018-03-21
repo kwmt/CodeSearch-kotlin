@@ -23,7 +23,7 @@ class EventListNavigator @Inject constructor(@Named("EventListFragment") val fra
         return observable.flatMap { result ->
             if (result.resultCode() != RESULT_OK) {
                 single.onSuccess("Not ok")
-                return@flatMap  single.toObservable()
+                return@flatMap single.toObservable()
             }
             single.onSuccess("success")
             return@flatMap single.toObservable()

@@ -1,7 +1,6 @@
 package net.kwmt27.codesearch.presentation.repositorylist
 
 import android.databinding.BaseObservable
-import android.view.View
 import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
@@ -40,12 +39,12 @@ class RepositoryListViewModel @Inject constructor(private val fetchEventListUseC
 
     inner class EventsObserver : BaseObserver<List<Event>>() {
         override fun onError(e: Throwable) {
-            Timber.d("onError:" + e)
+            Timber.d("onError:$e")
             e.printStackTrace()
         }
 
         override fun onSuccess(t: List<Event>) {
-            Timber.d("onSuccess" + t)
+            Timber.d("onSuccess:$t")
             // TODO: render
         }
     }

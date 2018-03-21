@@ -44,7 +44,6 @@ class EventListViewModel @Inject constructor(
         this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
     }
 
-
     inner class EventsObserver : BaseObserver<List<Event>>() {
         override fun onError(e: Throwable) {
             Timber.d("onError:" + e)

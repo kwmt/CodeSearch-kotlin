@@ -1,7 +1,6 @@
 package net.kwmt27.codesearch.presentation.eventlist
 
 import android.content.Context
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableList
 import android.databinding.ViewDataBinding
@@ -18,7 +17,6 @@ import net.kwmt27.codesearch.databinding.FragmentEventListBinding
 import net.kwmt27.codesearch.databinding.ViewEventCellBinding
 import net.kwmt27.codesearch.domain.model.GithubRepo
 import net.kwmt27.codesearch.presentation.adapter.BaseRecyclerAdapter
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
