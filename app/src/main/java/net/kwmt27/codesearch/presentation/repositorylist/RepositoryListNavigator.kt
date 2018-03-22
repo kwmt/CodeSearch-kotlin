@@ -10,7 +10,7 @@ import javax.inject.Named
  * ActivityのSubComponentとしてFactory
  */
 class RepositoryListNavigator @Inject constructor(@Named("RepositoryListFragment") val fragment: Fragment) {
-//    @Inject @Named("events")
+//    @Inject @Named("fetchEventList")
 //    lateinit var fragment:EventListFragment
 
     fun startActivityEventsFragmentToMain2Activity() {

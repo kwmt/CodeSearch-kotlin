@@ -5,17 +5,16 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import net.kwmt27.codesearch.application.App
-import net.kwmt27.codesearch.application.di.module.ActivityModule
 import net.kwmt27.codesearch.application.di.module.AppModule
+import net.kwmt27.codesearch.application.di.module.MainActivityProvider
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(
-        AndroidSupportInjectionModule::class,
-        AppModule::class,
-        ActivityModule::class
-)
-)
+@Component(modules = [
+    AndroidSupportInjectionModule::class,
+    AppModule::class,
+    MainActivityProvider::class
+])
 interface AppComponent : AndroidInjector<App> {
 
     @Component.Builder

@@ -17,6 +17,6 @@ class FetchEventListUseCase @Inject constructor(
     }
 
     override fun buildRepository(param: Params): Single<List<Event>> {
-        return eventRepository.events(param.user, param.page)
+        return eventRepository.fetchEventList(param.user, param.page)
     }
 }

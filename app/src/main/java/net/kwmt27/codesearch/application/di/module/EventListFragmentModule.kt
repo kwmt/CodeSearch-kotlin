@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.eventlist.di
+package net.kwmt27.codesearch.application.di.module
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -11,7 +11,7 @@ import javax.inject.Named
 
 @FragmentScope
 @Module
-class EventsFragmentModule {
+class EventListFragmentModule {
 
     @Named("EventListFragment")
     @Provides

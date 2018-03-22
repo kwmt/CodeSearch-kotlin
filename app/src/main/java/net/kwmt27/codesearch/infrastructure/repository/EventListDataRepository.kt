@@ -15,7 +15,7 @@ class EventListDataRepository
     private val eventEntityModelMapper: EventEntityModelMapper
 ) : EventListRepository {
 
-    override fun events(user: String, page: Int): Single<List<Event>> {
+    override fun fetchEventList(user: String, page: Int): Single<List<Event>> {
         return eventsDataSourceManager.eventEntities(user, page).map { eventEntityModelMapper.transform(it) }
     }
 }

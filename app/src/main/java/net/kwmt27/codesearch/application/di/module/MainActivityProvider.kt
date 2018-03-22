@@ -3,10 +3,7 @@ package net.kwmt27.codesearch.application.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import net.kwmt27.codesearch.application.di.ActivityScope
-import net.kwmt27.codesearch.presentation.eventlist.di.EventsFragmentProvider
 import net.kwmt27.codesearch.presentation.main.MainActivity
-import net.kwmt27.codesearch.presentation.main.MainActivityModule
-import net.kwmt27.codesearch.presentation.repositorylist.di.RepositoryListFragmentProvider
 
 /**
  * ActivityへのInject
@@ -19,31 +16,31 @@ import net.kwmt27.codesearch.presentation.repositorylist.di.RepositoryListFragme
  * - https://qiita.com/satorufujiwara/items/0f95ccfc3820d3ee1370
  */
 @Module
-abstract class ActivityModule {
+abstract class MainActivityProvider {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = arrayOf(
-            EventsFragmentProvider::class,
-            RepositoryListFragmentProvider::class,
-            MainActivityModule::class
-    ))
+    @ContributesAndroidInjector(modules = [
+        EventListFragmentProvider::class,
+        RepositoryListFragmentProvider::class,
+        MainActivityModule::class
+    ])
     internal abstract fun contributeMainActivity(): MainActivity
 }
 
 /**
  * [@SubComponent]を使うパターン
  */
-//@Module(subcomponents = arrayOf(ActivityModule.MainActivitySubComponent::class))
-//abstract class ActivityModule {
+//@Module(subcomponents = arrayOf(MainActivityProvider.MainActivitySubComponent::class))
+//abstract class MainActivityProvider {
 //
 //    @Binds
 //    @IntoMap
 //    @ActivityKey(MainActivity::class)
 //    internal abstract fun bindMainActivityAndroidInjectorFactory(
-//            builder: ActivityModule.MainActivitySubComponent.Builder): AndroidInjector.Factory<out Activity>
+//            builder: MainActivityProvider.MainActivitySubComponent.Builder): AndroidInjector.Factory<out Activity>
 //
 //    @ActivityScope
-//    @Subcomponent(modules = arrayOf(ActivityModule_temp::class, EventsFragmentProvider::class))
+//    @Subcomponent(modules = arrayOf(ActivityModule_temp::class, EventListFragmentProvider::class))
 //    interface MainActivitySubComponent:AndroidInjector<MainActivity> {
 //
 //        @Subcomponent.Builder

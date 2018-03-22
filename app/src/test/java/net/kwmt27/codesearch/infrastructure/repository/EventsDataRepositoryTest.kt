@@ -37,7 +37,7 @@ class EventsDataRepositoryTest {
 
         given(mockEventsDataSourceManager.eventEntities(FAKE_USER_ID, FAKE_PAGE)).willReturn(Single.just(events))
 
-        eventsDataRepository.events(FAKE_USER_ID, FAKE_PAGE)
+        eventsDataRepository.fetchEventList(FAKE_USER_ID, FAKE_PAGE)
 
         verify(mockEventsDataSourceManager).eventEntities(FAKE_USER_ID, FAKE_PAGE)
     }

@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.repositorylist.di
+package net.kwmt27.codesearch.application.di.module
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
