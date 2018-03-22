@@ -7,7 +7,7 @@ import net.kwmt27.codesearch.application.di.ActivityScope
 import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.usecase.BaseObserver
 import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
-import net.kwmt27.codesearch.presentation.ViewModel
+import net.kwmt27.codesearch.presentation.common.ViewModel
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named

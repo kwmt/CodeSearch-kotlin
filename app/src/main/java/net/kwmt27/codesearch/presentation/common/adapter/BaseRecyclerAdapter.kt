@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.adapter
+package net.kwmt27.codesearch.presentation.common.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

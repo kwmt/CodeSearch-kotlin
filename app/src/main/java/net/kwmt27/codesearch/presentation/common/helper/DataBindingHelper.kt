@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.presentation.helper
+package net.kwmt27.codesearch.presentation.common.helper
 
 import android.databinding.BindingAdapter
 import android.support.v4.content.ContextCompat

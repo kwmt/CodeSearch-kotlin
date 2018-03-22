@@ -16,7 +16,7 @@ import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.databinding.FragmentEventListBinding
 import net.kwmt27.codesearch.databinding.ViewEventCellBinding
 import net.kwmt27.codesearch.domain.model.GithubRepo
-import net.kwmt27.codesearch.presentation.adapter.BaseRecyclerAdapter
+import net.kwmt27.codesearch.presentation.common.adapter.BaseRecyclerAdapter
 import javax.inject.Inject
 
 /**

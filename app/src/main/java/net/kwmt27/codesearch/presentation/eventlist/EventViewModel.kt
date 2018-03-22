@@ -5,7 +5,7 @@ import android.view.View
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import net.kwmt27.codesearch.domain.model.GithubUser
-import net.kwmt27.codesearch.presentation.ViewModel
+import net.kwmt27.codesearch.presentation.common.ViewModel
 import timber.log.Timber
 
 /**
