@@ -7,14 +7,17 @@ import io.reactivex.rxkotlin.addTo
 import net.kwmt27.codesearch.domain.model.GithubUser
 import net.kwmt27.codesearch.presentation.common.ViewModel
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * イベント一覧の各リストアイテムに対応するViewModel
  */
 class EventViewModel(
-    githubUser: GithubUser,
-    private val eventListNavigator: EventListNavigator
-) : BaseObservable(), ViewModel {
+    githubUser: GithubUser
+) : BaseObservable(), ViewModel, IEventViewModel {
+
+    @Inject
+    lateinit var eventListNavigator: EventListNavigator
 
     private val compositeDisposable = CompositeDisposable()
 

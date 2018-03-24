@@ -8,15 +8,19 @@ import javax.inject.Inject
 /**
  * イベントリストを取得するUseCase
  */
-class FetchEventListUseCase @Inject constructor(
+interface FetchEventListUseCase {
+    fun execute(user: String, page: Int): Single<List<Event>>
+}
+
+class FetchEventListUseCaseImpl @Inject constructor(
     private val eventRepository: EventListRepository
-) : UseCase<FetchEventListUseCase.Companion.Params, List<Event>>() {
+) : FetchEventListUseCase {
 
     companion object {
         data class Params(val user: String, val page: Int)
     }
 
-    override fun buildRepository(param: Params): Single<List<Event>> {
-        return eventRepository.fetchEventList(param.user, param.page)
+    override fun execute(user: String, page: Int): Single<List<Event>> {
+        return eventRepository.fetchEventList(user, page)
     }
 }

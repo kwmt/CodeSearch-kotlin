@@ -11,6 +11,8 @@ import net.kwmt27.codesearch.BuildConfig
 import net.kwmt27.codesearch.application.App
 import net.kwmt27.codesearch.domain.repository.EventListRepository
 import net.kwmt27.codesearch.domain.repository.LoginRepository
+import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
+import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCaseImpl
 import net.kwmt27.codesearch.infrastructure.api.GithubApi
 import net.kwmt27.codesearch.infrastructure.extension.printCurlString
 import net.kwmt27.codesearch.infrastructure.repository.EventListDataRepository
@@ -40,6 +42,10 @@ class AppModule {
     @Singleton
     @Provides
     fun provideEventsRepository(eventsDataRepository: EventListDataRepository): EventListRepository = eventsDataRepository
+
+    @Provides
+    fun provideFetchEventListUseCase(eventListRepository: EventListDataRepository) :
+            FetchEventListUseCase = FetchEventListUseCaseImpl(eventListRepository)
 
     @Singleton
     @Provides
