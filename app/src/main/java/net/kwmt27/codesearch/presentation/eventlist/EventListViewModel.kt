@@ -1,6 +1,8 @@
 package net.kwmt27.codesearch.presentation.eventlist
 
 import android.databinding.BaseObservable
+import android.databinding.Bindable
+import com.android.databinding.library.baseAdapters.BR
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,12 +27,20 @@ class EventListViewModel @Inject constructor(
     @Named("EventsFragmentNavigator")
     lateinit var eventListNavigator: EventListNavigator
 
+    /** リストの状態をリセットするフラグ */
+    @get:Bindable
+    var resetLoadingState: Boolean = false
+        set(resetLoadingState) {
+            field = resetLoadingState
+            notifyPropertyChanged(BR.resetLoadingState)
+        }
+
     var hasMore = BehaviorRelay.createDefault(false)
 
     val eventViewModelList = BehaviorSubject
             .createDefault<List<EventViewModel>>(arrayListOf())
 
-    private var currentPage: Int = 0
+    var currentPage: Int = 0
 
     private lateinit var paginator: PublishProcessor<Int>
 
