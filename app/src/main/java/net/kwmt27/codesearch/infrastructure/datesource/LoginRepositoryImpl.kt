@@ -1,4 +1,4 @@
-package net.kwmt27.codesearch.infrastructure.repository
+package net.kwmt27.codesearch.infrastructure.datesource
 
 import io.reactivex.Single
 import net.kwmt27.codesearch.domain.repository.LoginRepository

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class EventsDataSourceMapperTest {
+class EventListDataSourceMapperTest {
 
     companion object {
         const val FAKE_GITHUBUSER_DISPLAY_LOGIN = "testdisplaylogin"

@@ -29,12 +29,12 @@ class RepositoryListViewModel @Inject constructor(private val fetchEventListUseC
     }
 
     override fun destroy() {
-        this.fetchEventListUseCase.dispose()
+        //this.fetchEventListUseCase.dispose()
     }
 
     private fun loadEvents(user: String, page: Int) {
         // TODO: Companionを書くしかないのかな...
-        this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
+//        this.fetchEventListUseCase.execute(EventsObserver(), FetchEventListUseCase.Companion.Params(user, page))
     }
 
     inner class EventsObserver : BaseObserver<List<Event>>() {

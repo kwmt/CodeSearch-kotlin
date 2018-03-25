@@ -16,9 +16,6 @@ class FetchEventListUseCaseImpl @Inject constructor(
     private val eventRepository: EventListRepository
 ) : FetchEventListUseCase {
 
-    companion object {
-        data class Params(val user: String, val page: Int)
-    }
 
     override fun execute(user: String, page: Int): Single<List<Event>> {
         return eventRepository.fetchEventList(user, page)

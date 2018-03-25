@@ -3,7 +3,6 @@ package net.kwmt27.codesearch.infrastructure.repository
 import io.reactivex.Single
 import net.kwmt27.codesearch.infrastructure.entity.EventEntity
 import net.kwmt27.codesearch.infrastructure.entity.mapper.EventEntityModelMapper
-import net.kwmt27.codesearch.infrastructure.repository.datesource.EventsDataSourceManager
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -14,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class EventsDataRepositoryTest {
-    private lateinit var eventsDataRepository: EventListDataRepository
+    private lateinit var eventsDataRepository: EventListDataSource
 
     @Mock private lateinit var mockEventsDataSourceManager: EventsDataSourceManager
     @Mock private lateinit var mockEventEntityModelMapper: EventEntityModelMapper
@@ -24,7 +23,7 @@ class EventsDataRepositoryTest {
 
     @Before
     fun setup() {
-        eventsDataRepository = EventListDataRepository(mockEventsDataSourceManager, mockEventEntityModelMapper)
+        eventsDataRepository = EventListDataSource(mockEventsDataSourceManager, mockEventEntityModelMapper)
 
     }
 

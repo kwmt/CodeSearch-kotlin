@@ -1,8 +1,6 @@
 package net.kwmt27.codesearch.presentation.eventlist
 
 import android.databinding.BaseObservable
-import android.databinding.ObservableArrayList
-import android.databinding.ObservableList
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,11 +8,8 @@ import io.reactivex.processors.PublishProcessor
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.SingleSubject
 import net.kwmt27.codesearch.application.di.ActivityScope
-import net.kwmt27.codesearch.domain.model.Event
-import net.kwmt27.codesearch.domain.usecase.BaseObserver
 import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
 import net.kwmt27.codesearch.presentation.common.ViewModel
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -30,39 +25,36 @@ class EventListViewModel @Inject constructor(
     @Named("EventsFragmentNavigator")
     lateinit var eventListNavigator: EventListNavigator
 
-    val eventViewModelList: ObservableList<IEventViewModel>
-
     var hasMore = BehaviorRelay.createDefault(false)
 
-    val eventViewModelListSubject = BehaviorSubject
+    val eventViewModelList = BehaviorSubject
             .createDefault<List<EventViewModel>>(arrayListOf())
-
-    init {
-        Timber.d("EventListViewModel is created.")
-        eventViewModelList = ObservableArrayList<IEventViewModel>()
-    }
 
     private var currentPage: Int = 0
 
     private lateinit var paginator: PublishProcessor<Int>
 
-    fun initialize(user: String, page: Int) {
+    fun initialize(user: String) {
         currentPage = 1
         paginator = PublishProcessor.create()
         paginator.onBackpressureDrop()
                 .filter { !hasMore.value }
                 .doOnNext { hasMore.accept(true) }
-                .concatMap { loadEvents("kwmt", it).toFlowable() }
+                .concatMap { loadEvents(user, it).toFlowable() }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     hasMore.accept(false)
+                    eventViewModelList.onNext(it)
                     currentPage++
-                    eventViewModelListSubject.onNext(it)
                 }, {
                     hasMore.accept(false)
 
                 })
-        loadEvents(user, page)
+        onLoadMore(currentPage)
+    }
+
+    fun onLoadMore(page: Int) {
+        paginator.onNext(page)
     }
 
     override fun destroy() {
@@ -76,26 +68,5 @@ class EventListViewModel @Inject constructor(
             }
             SingleSubject.just(eventViewModels)
         }
-    }
-
-    inner class EventsObserver : BaseObserver<List<Event>>() {
-        override fun onError(e: Throwable) {
-            Timber.d("onError:$e")
-            e.printStackTrace()
-        }
-
-        override fun onSuccess(list: List<Event>) {
-            Timber.d("onSuccess:$list")
-            // TODO: render
-            val eventViewModels = list.map {
-                EventViewModel(it.githubUser).apply { }
-            }
-            render(eventViewModels)
-        }
-    }
-
-    private fun render(list: List<EventViewModel>) {
-        eventViewModelList.clear()
-        eventViewModelList.addAll(list)
     }
 }

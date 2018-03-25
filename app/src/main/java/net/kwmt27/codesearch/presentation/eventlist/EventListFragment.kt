@@ -1,7 +1,6 @@
 package net.kwmt27.codesearch.presentation.eventlist
 
 import android.databinding.DataBindingUtil
-import android.databinding.ObservableList
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -52,7 +51,6 @@ class EventListFragment : DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.initialize("kwmt", 1)
     }
 
     override fun onCreateView(
@@ -63,8 +61,13 @@ class EventListFragment : DaggerFragment() {
         binding = FragmentEventListBinding.inflate(inflater, container, false).also {
             it.viewModel = viewModel
         }
-        initView()
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initView()
+        viewModel.initialize("kwmt")
     }
 
     override fun onDestroy() {
@@ -77,7 +80,7 @@ class EventListFragment : DaggerFragment() {
 
     private fun initView() {
         binding.recyclerView.apply {
-            recyclerAdapter = Adapter(viewModel.eventViewModelList)
+            recyclerAdapter = Adapter(viewModel.eventViewModelList.value.toMutableList())
             this.adapter = recyclerAdapter
             this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
@@ -90,20 +93,22 @@ class EventListFragment : DaggerFragment() {
                     }
                 }.addTo(compositeDisposable)
 
-        viewModel.eventViewModelListSubject.observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    render(it)
-                }.addTo(compositeDisposable)
+        viewModel.eventViewModelList.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::render)
+                .addTo(compositeDisposable)
     }
+
     private fun render(list: List<EventViewModel>) {
         recyclerAdapter.addAll(list)
     }
 
     private fun hideProgress(): Boolean {
-        val progressItemViewModel = recyclerAdapter.getItem(recyclerAdapter.itemCount - 1) as? ProgressItemViewModel
-        if (recyclerAdapter.itemCount > 0 && progressItemViewModel != null && progressItemViewModel
-                        .loading) {
-            recyclerAdapter.remove(recyclerAdapter.itemCount - 1)
+
+        if (recyclerAdapter.itemCount > 0) {
+            val progressItemViewModel = recyclerAdapter.getItem(recyclerAdapter.itemCount - 1) as? ProgressItemViewModel
+            if (progressItemViewModel != null && progressItemViewModel.loading) {
+                recyclerAdapter.remove(recyclerAdapter.itemCount - 1)
+            }
         }
 
         return false
@@ -114,7 +119,7 @@ class EventListFragment : DaggerFragment() {
         return true
     }
 
-    private class Adapter(list: ObservableList<IEventViewModel>) :
+    private class Adapter(list: MutableList<IEventViewModel>) :
             SimpleRecyclerAdapter<IEventViewModel>(list) {
 
         companion object {
