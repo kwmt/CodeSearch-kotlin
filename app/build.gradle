@@ -2,16 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "net.kwmt27.codesearch"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -89,10 +91,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Support
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    kapt 'com.android.databinding:compiler:3.0.0'
+    kapt 'com.android.databinding:compiler:3.0.1'
 
 
     // Network
@@ -101,7 +103,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
     implementation "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 
     // Structure
     /// dagger
@@ -119,15 +121,18 @@ dependencies {
     }
 
     /// Reactive
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    implementation 'com.github.VictorAlbertos:RxActivityResult:0.4.5-2.x'
 
     // Image
-    implementation 'com.github.bumptech.glide:glide:4.2.0'
-    kapt 'com.github.bumptech.glide:compiler:4.2.0'
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    kapt 'com.github.bumptech.glide:compiler:4.6.1'
 
     // Android Utility
-    implementation 'com.jakewharton.timber:timber:4.5.1'
+    implementation 'com.jakewharton.timber:timber:4.6.0'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
     implementation 'com.deploygate:sdk:4.0.0'
 
@@ -135,7 +140,7 @@ dependencies {
     // Test
     // Dependencies for local unit tests
     testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:2.11.0"
+    testImplementation "org.mockito:mockito-core:2.13.0"
 
     kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
@@ -159,4 +164,9 @@ dokka {
     outputFormat = 'html'
     outputDirectory = "$buildDir/javadoc"
     includes = ['doc.md']
+}
+
+// https://github.com/jlleitschuh/ktlint-gradle
+ktlint {
+    version = "0.20.0"
 }

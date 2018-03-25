@@ -3,38 +3,34 @@ package net.kwmt27.codesearch.infrastructure.extension
 import okhttp3.Request
 import okhttp3.RequestBody
 import okio.Buffer
-import timber.log.Timber
 import java.io.IOException
 
-
 /**
- * [Request] からcurl形式でログ出力する。
- * @param request [Request]
+ * @param cookies クッキー文字列
+ * @return [Request] からcurl形式の文字列を返す
  */
-inline fun Request.printCurlString() {
-    val bodyString = body()?.toStringFromRequestBody() ?: ""
-    val contentType = body()?.contentType()?.toString() ?: ""
-
-    val headers = headers()
-    val result = StringBuilder()
-
-    if (headers.size() > 0) {
-        for (i in 0..headers.size()) {
-            result.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
+fun Request.curl(cookies: String? = null): String {
+    val body = this.body()
+    val bodyString = body?.let { toStringFromRequestBody(it) } ?: ""
+    val contentType = body?.contentType()?.toString() ?: ""
+    val headersString = StringBuilder().apply {
+        val headers = this@curl.headers()
+        for (i in 0 until headers.size()) {
+            this.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i) + "'")
         }
-    }
-    Timber.d("curl  -X ${method()} \\\n -d '$bodyString' \\\n -H '$contentType'$result \\\n '${url()}'\n")
+        cookies?.let {
+            this.append(" -H 'Cookie: $it'")
+        }
+    }.toString()
+    return "curl  -X ${this.method()} \\\n -d '$bodyString' \\\n -H '$contentType'$headersString \\\n '${this.url()}'\n"
 }
 
-
-inline fun RequestBody.toStringFromRequestBody(): String {
+private fun toStringFromRequestBody(body: RequestBody): String {
     try {
         val buffer = Buffer()
-        writeTo(buffer)
+        body.writeTo(buffer)
         return buffer.readUtf8()
     } catch (e: IOException) {
         return ""
     }
-
 }
-

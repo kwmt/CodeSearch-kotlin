@@ -1,0 +1,93 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: punchdrunker/android-27-ruby
+        environment:
+          JAVA_OPTS: -Xmx1536m
+          GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx1536m -XX:+HeapDumpOnOutOfMemoryError"'
+    steps:
+      - checkout
+      - restore_cache:
+          key: sdks-licenses-build-tools-extras-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      - run:
+          name: ENV
+          command: |
+            echo ${CIRCLE_BRANCH}
+            echo ${CIRCLE_REPOSITORY_URL}
+            echo ${CIRCLE_SHA1}
+            echo ${CIRCLE_BUILD_NUM}
+            echo ${CIRCLE_BUILD_URL}
+            echo ${CI_PULL_REQUESTS}
+            echo ${CI_PULL_REQUEST}
+            echo ${CIRCLE_TEST_REPORTS}
+            git config --global url."ssh://git@github.com".insteadOf "https://github.com" || true
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - run:
+          name: Build
+          command: |
+              ./gradlew --stacktrace assemble${APP_BUILD_TYPE^}
+      - run:
+          name: Check
+          command: |
+              ./gradlew --stacktrace lint${APP_BUILD_TYPE^}
+              ./gradlew --stacktrace ktlint${APP_BUILD_TYPE^}Check
+      - run:
+          name: Test
+          command: |
+              ./gradlew --stacktrace test${APP_BUILD_TYPE^}
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - store_artifacts:
+          path: app/build/outputs/apk
+          destination: apk
+      - save_cache:
+          key: sdks-licenses-build-tools-extras-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+          paths:
+            - /opt/android/sdk/licenses
+            - /opt/android/sdk/build-tools
+            - /opt/android/sdk/extras
+      - save_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+          paths:
+            - ~/.gradle
+
+  deploy:
+    docker:
+      - image: punchdrunker/android-27-ruby
+        environment:
+          JAVA_OPTS: -Xmx1536m
+          GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx1536m -XX:+HeapDumpOnOutOfMemoryError"'
+    steps:
+      - checkout
+      - restore_cache:
+          key: sdks-licenses-build-tools-extras-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      - run:
+          name: Build
+          command: |
+              ./gradlew --offline --stacktrace assemble${APP_BUILD_TYPE^}
+      - run:
+          name: Upload to DeployGate
+          command: |
+              ./gradlew uploadDeployGate${APP_BUILD_TYPE^} -PdisablePreDex
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master

@@ -1,6 +1,5 @@
 package net.kwmt27.codesearch.application.di
 
-
 import javax.inject.Scope
 
 @Scope

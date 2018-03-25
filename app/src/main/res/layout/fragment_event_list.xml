@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.kwmt27.codesearch.presentation.eventlist.EventListViewModel"
+            />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            bind:onLoadMore="@{() -> viewModel.onLoadMore(viewModel.currentPage)}"
+            bind:resetLoadingState="@{viewModel.resetLoadingState}"
+            tools:listitem="@layout/view_event_item"
+            />
+
+    </RelativeLayout>
+</layout>
+
