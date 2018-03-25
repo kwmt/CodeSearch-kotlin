@@ -126,10 +126,11 @@ class EventListFragment : DaggerFragment() {
             private const val ITEM_PROGRESS = -1
         }
 
-        override fun getItemViewType(position: Int): Int {
-            getItem(position) as? ProgressItemViewModel ?: super.getItemViewType(position)
-            return ITEM_PROGRESS
-        }
+        override fun getItemViewType(position: Int): Int =
+                if ((getItem(position) as? ProgressItemViewModel) != null) {
+                    ITEM_PROGRESS
+                } else
+                    super.getItemViewType(position)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
                 if (viewType == ITEM_PROGRESS) {
