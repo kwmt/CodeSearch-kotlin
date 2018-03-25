@@ -104,18 +104,17 @@ class EventListFragment : DaggerFragment() {
 
     private fun hideProgress(): Boolean {
 
-        if (recyclerAdapter.itemCount > 0) {
-            val progressItemViewModel = recyclerAdapter.getItem(recyclerAdapter.itemCount - 1) as? ProgressItemViewModel
-            if (progressItemViewModel != null && progressItemViewModel.loading) {
-                recyclerAdapter.remove(recyclerAdapter.itemCount - 1)
-            }
+        if (recyclerAdapter.itemCount <= 0) {
+            return false
         }
-
-        return false
+        recyclerAdapter.getItem(recyclerAdapter.itemCount - 1)
+                as? ProgressItemViewModel ?: return false
+        recyclerAdapter.remove(recyclerAdapter.itemCount - 1)
+        return true
     }
 
     private fun showProgress(): Boolean {
-        recyclerAdapter.add(ProgressItemViewModel().apply { loading = true })
+        recyclerAdapter.add(ProgressItemViewModel())
         return true
     }
 
@@ -128,11 +127,8 @@ class EventListFragment : DaggerFragment() {
         }
 
         override fun getItemViewType(position: Int): Int {
-            val progressItemViewModel = getItem(position) as? ProgressItemViewModel
-            if (progressItemViewModel != null && progressItemViewModel.loading) {
-                return ITEM_PROGRESS
-            }
-            return super.getItemViewType(position)
+            getItem(position) as? ProgressItemViewModel ?: super.getItemViewType(position)
+            return ITEM_PROGRESS
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =

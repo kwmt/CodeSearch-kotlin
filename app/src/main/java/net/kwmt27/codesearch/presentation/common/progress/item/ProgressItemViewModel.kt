@@ -10,5 +10,5 @@ import javax.inject.Inject
 @ActivityScope
 class ProgressItemViewModel @Inject constructor() : EndlessProgressable, IEventViewModel {
 
-    override var loading: Boolean = false
+    override var loading: Boolean = true
 }
