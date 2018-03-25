@@ -21,7 +21,6 @@ fun Request.curl(cookies: String? = null): String {
         cookies?.let {
             this.append(" -H 'Cookie: $it'")
         }
-
     }.toString()
     return "curl  -X ${this.method()} \\\n -d '$bodyString' \\\n -H '$contentType'$headersString \\\n '${this.url()}'\n"
 }

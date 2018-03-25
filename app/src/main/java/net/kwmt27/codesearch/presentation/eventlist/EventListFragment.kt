@@ -49,10 +49,6 @@ class EventListFragment : DaggerFragment() {
 
     private lateinit var binding: FragmentEventListBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -98,24 +94,26 @@ class EventListFragment : DaggerFragment() {
                 .addTo(compositeDisposable)
     }
 
-    private fun render(list: List<EventViewModel>) {
-        recyclerAdapter.addAll(list)
-    }
-
-    private fun hideProgress(): Boolean {
-
-        if (recyclerAdapter.itemCount <= 0) {
-            return false
-        }
-        recyclerAdapter.getItem(recyclerAdapter.itemCount - 1)
-                as? ProgressItemViewModel ?: return false
-        recyclerAdapter.remove(recyclerAdapter.itemCount - 1)
-        return true
-    }
-
     private fun showProgress(): Boolean {
         recyclerAdapter.add(ProgressItemViewModel())
         return true
+    }
+
+    private fun hideProgress(): Boolean {
+        if (recyclerAdapter.itemCount <= 0) {
+            return false
+        }
+        val lastPosition = recyclerAdapter.itemCount - 1
+        return if ((recyclerAdapter.getItem(lastPosition) as? ProgressItemViewModel) == null) {
+            false
+        } else {
+            recyclerAdapter.remove(lastPosition)
+            true
+        }
+    }
+
+    private fun render(list: List<EventViewModel>) {
+        recyclerAdapter.addAll(list)
     }
 
     private class Adapter(list: MutableList<IEventViewModel>) :

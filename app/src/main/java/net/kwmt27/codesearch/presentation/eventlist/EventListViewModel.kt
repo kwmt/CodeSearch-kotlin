@@ -58,7 +58,6 @@ class EventListViewModel @Inject constructor(
                     currentPage++
                 }, {
                     hasMore.accept(false)
-
                 })
         onLoadMore(currentPage)
     }
@@ -74,7 +73,9 @@ class EventListViewModel @Inject constructor(
     private fun loadEvents(user: String, page: Int): Single<List<EventViewModel>> {
         return this.fetchEventListUseCase.execute(user, page).flatMap {
             val eventViewModels = it.map {
-                return@map EventViewModel(it.githubUser)
+                return@map EventViewModel(it.githubUser).also { eventViewModel ->
+                    eventViewModel.eventListNavigator = this.eventListNavigator
+                }
             }
             SingleSubject.just(eventViewModels)
         }

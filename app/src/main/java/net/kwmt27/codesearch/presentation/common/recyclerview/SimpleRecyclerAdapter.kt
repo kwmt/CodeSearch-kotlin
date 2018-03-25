@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
  * リストに複数のViewTypeがある場合にも使えます。
  */
 abstract class SimpleRecyclerAdapter<T>(
-        val list: MutableList<T>
+    val list: MutableList<T>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int {
         return list.size

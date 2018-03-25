@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView
  * 無限スクロール対応のOnScrollListener
  */
 class InfiniteRecyclerViewOnScrollListener(
-        private val resetLoadingState: Boolean,
-        private val onScrollListener: OnScrolledListener
+    resetLoadingState: Boolean,
+    private val onScrollListener: OnScrolledListener
 ) : RecyclerView.OnScrollListener() {
 
     /** データロード中ならtrue */
