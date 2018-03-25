@@ -49,7 +49,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideEventListRepository(
-        githubApi: GithubApi, eventEntityModelMapper: EventEntityModelMapper
+        githubApi: GithubApi,
+        eventEntityModelMapper: EventEntityModelMapper
     ): EventListRepository = GithubApiDataSource(githubApi, eventEntityModelMapper)
 
     @Provides
