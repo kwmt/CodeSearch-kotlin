@@ -6,4 +6,6 @@
 
     <color name="grey200">#200000</color>
     <color name="translucent">#aa000000</color>
+
+    <color name="notificationBackgroundColor">#82D7E1</color>
 </resources>
